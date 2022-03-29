@@ -1,4 +1,4 @@
-package com.lawlett.core
+package com.example.core
 
 import org.junit.Test
 

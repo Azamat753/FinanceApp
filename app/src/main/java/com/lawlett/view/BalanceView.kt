@@ -1,4 +1,4 @@
-package com.lawlett.financeapp
+package com.lawlett.view
 
 import com.lawlett.domain.model.BalanceModel
 

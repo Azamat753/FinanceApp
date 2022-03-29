@@ -1,8 +1,9 @@
-package com.lawlett.financeapp
+package com.lawlett.financeapp.presenter
 
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.usecase.GetIncomeUseCase
 import com.lawlett.domain.usecase.SaveIncomeUseCase
+import com.lawlett.view.BalanceView
 
 class BalancePresenter(
     private val getIncomeUseCase: GetIncomeUseCase,
