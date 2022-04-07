@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/layout/fragment_change_balance_sheet_dialog.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/item_balance.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/item_category_icon.xml" value="0.37604166666666666" />
+        <entry key="core/src/main/res/drawable/ic_work.xml" value="0.2305" />
       </map>
     </option>
   </component>

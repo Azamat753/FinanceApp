@@ -6,8 +6,8 @@ import java.util.ArrayList
 
 interface BalanceRepository {
     fun saveIncome(balanceModel: BalanceModel)
-    fun saveCost()
+    fun saveCost(balanceModel: BalanceModel)
     fun getIncome(): BalanceModel
     fun getCost()
-    fun fillIcons() : ArrayList<CategoryIconModel>
+    fun fillIcons(): ArrayList<CategoryIconModel>
 }
