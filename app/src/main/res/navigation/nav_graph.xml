@@ -10,4 +10,14 @@
         android:name="com.lawlett.financeapp.fragment.BalanceFragment"
         android:label="fragment_balance"
         tools:layout="@layout/fragment_balance" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.lawlett.financeapp.fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/planFragment"
+        android:name="com.lawlett.financeapp.fragment.PlanFragment"
+        android:label="fragment_plan"
+        tools:layout="@layout/fragment_plan" />
 </navigation>

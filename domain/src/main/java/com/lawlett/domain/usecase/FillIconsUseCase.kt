@@ -7,7 +7,5 @@ import javax.inject.Inject
 
 class FillIconsUseCase @Inject constructor(private val repository: BalanceRepository) {
 
-    fun fillIcons() :ArrayList<CategoryIconModel> {
-      return repository.fillIcons()
-    }
+    fun fillIncome(): List<CategoryIconModel> = repository.fillIncome()
 }

@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "balanceModel")
 class BalanceRoomModel(
     @PrimaryKey(autoGenerate = true)
-    var id:Int?=null,
+    var id: Int? = null,
     val balance: String,
     val cost: String,
     val income: String,
     val date: String,
     val icon: Int,
-    val iconName:String,
-    val isIncome: Boolean
+    val iconName: String,
+    val month: String
 )

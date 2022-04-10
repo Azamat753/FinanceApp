@@ -18,5 +18,4 @@ open class BasePresenter<View : MvpView?> : MvpPresenter<View>(), CoroutineScope
         super.onDestroy()
         job.cancel()
     }
-
 }

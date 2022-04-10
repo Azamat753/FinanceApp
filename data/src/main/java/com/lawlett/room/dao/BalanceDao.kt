@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.lawlett.room.model.BalanceRoomModel
-import java.util.concurrent.Flow
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BalanceDao {
@@ -17,5 +17,8 @@ interface BalanceDao {
     suspend fun updateBalance(balanceRoomModel: BalanceRoomModel)
 
     @Query("SELECT * FROM balanceModel")
-    fun getIncome(): kotlinx.coroutines.flow.Flow<List<BalanceRoomModel>>
+   fun getIncome(): Flow<List<BalanceRoomModel>>
+
+    @Query("SELECT * FROM balanceModel")
+    suspend fun getAllList(): List<BalanceRoomModel>
 }

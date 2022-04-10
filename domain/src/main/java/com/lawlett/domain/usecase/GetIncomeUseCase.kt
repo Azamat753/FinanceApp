@@ -5,8 +5,6 @@ import com.lawlett.domain.model.BalanceModel
 
 class GetIncomeUseCase(private val repository: BalanceRepository) {
 
-    fun getIncome(): BalanceModel {
-        return repository.getIncome()
-    }
+     fun getIncome(): BalanceModel = repository.getIncome()
 
 }

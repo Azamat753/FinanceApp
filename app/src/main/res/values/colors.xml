@@ -12,4 +12,7 @@
     <color name="red">#FE5E5B</color>
     <color name="black_32">#323232</color>
     <color name="green">#10AF7F</color>
+    <color name="gray_light">#E5EBFF</color>
+    <color name="gray_normal">#9AA8C7</color>
+
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/balanceFragment"
+        android:icon="@drawable/home_selector"
+        android:title="@string/main" />
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/history_selector"
+        android:title="@string/history" />
+    <item
+        android:id="@+id/planFragment"
+        android:icon="@drawable/plan_selector"
+        android:title="@string/plan" />
+</menu>

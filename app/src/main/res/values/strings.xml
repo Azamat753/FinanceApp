@@ -5,4 +5,24 @@
     <string name="income">Доход</string>
     <string name="cost">Расход</string>
     <string name="apply">Принять</string>
+    <string name="History">История</string>
+    <string name="black">#000000</string>
+    <string name="green">#10AF7F</string>
+    <string name="main">Главная</string>
+    <string name="history">История</string>
+    <string name="plan">План</string>
+    <string name="january">Январь</string>
+    <string name="february">Февраль</string>
+    <string name="march">Март</string>
+    <string name="april">Апрель</string>
+    <string name="may">Май</string>
+    <string name="june">Июнь</string>
+    <string name="July">Июль</string>
+    <string name="August">Август</string>
+    <string name="september">Сентябрь</string>
+    <string name="October">Октябрь</string>
+    <string name="november">Ноябрь</string>
+    <string name="December">Декабрь</string>
+    <string name="choose_category">Пожалуйста выберите категорию!</string>
+    <string name="enter_amount">Введите сумму!</string>
 </resources>

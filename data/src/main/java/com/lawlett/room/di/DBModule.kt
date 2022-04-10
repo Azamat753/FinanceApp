@@ -27,7 +27,9 @@ object DBModule {
         }
         synchronized(this) {
             val instance =
-                Room.databaseBuilder(context, AppDataBase::class.java, "finance_database").build()
+                Room.databaseBuilder(context, AppDataBase::class.java, "finance_database")
+                    .fallbackToDestructiveMigration()
+                    .build()
             INSTANCE = instance
             return instance
         }

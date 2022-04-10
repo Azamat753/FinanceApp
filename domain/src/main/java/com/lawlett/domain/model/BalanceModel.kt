@@ -7,5 +7,5 @@ class BalanceModel(
     val date: String? = null,
     val icon: Int? = null,
     val iconName: String? = null,
-    val isIncome: Boolean? = null
+    val month: String? = null
 )
