@@ -1,5 +1,6 @@
 package com.lawlett.financeapp.presenter
 
+import android.util.Log
 import com.example.core.base.BasePresenter
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.usecase.*
@@ -35,7 +36,19 @@ class BalancePresenter @Inject constructor(
     }
 
 
-    fun initDate() = viewState.initDate()
+    fun initDate() {
+        viewState.initDate()
+    }
 
+    fun checkCostList(costList: List<BalanceModel>) {
+        Log.e("ABOBA", "Cost =   ${costList.isEmpty()}")
+        if (costList.isEmpty()) viewState.emptyCost() else viewState.txtCost()
+    }
+
+    fun checkIncomeList(incomeList: List<BalanceModel>) {
+        Log.e("ABOBA", "Income =   ${incomeList.isEmpty()}")
+        if (incomeList.isEmpty()) viewState.emptyIncome() else viewState.txtIncome()
+    }
 }
+
 

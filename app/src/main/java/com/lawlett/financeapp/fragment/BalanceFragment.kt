@@ -1,6 +1,7 @@
 package com.lawlett.financeapp.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.financeapp.R
@@ -136,6 +137,28 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         initAdapterIncome(presenter.getIncomeList())
         initAdapterCost(presenter.getCostList())
         initModel()
+        presenter.checkCostList(presenter.getCostList())
+        presenter.checkIncomeList(presenter.getIncomeList())
+    }
+
+    override fun emptyIncome() {
+        Log.e("ABOBA", "EmptyIncome")
+        binding.incomeListTitle.text = getString(R.string.not_income)
+    }
+
+    override fun emptyCost() {
+        Log.e("ABOBA", "EmptyCost")
+        binding.costListTitle.text = getString(R.string.not_cost)
+    }
+
+    override fun txtIncome() {
+        Log.e("ABOBA", "Income")
+        binding.incomeListTitle.text = getString(R.string.income)
+    }
+
+    override fun txtCost() {
+        Log.e("ABOBA", "Cost")
+        binding.costListTitle.text = getString(R.string.cost)
     }
 
     private fun initAdapterIncome(list: List<BalanceModel>) {

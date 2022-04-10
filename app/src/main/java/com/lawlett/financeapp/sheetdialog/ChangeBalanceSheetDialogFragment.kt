@@ -1,20 +1,16 @@
 package com.lawlett.financeapp.sheetdialog
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.core.base.BaseBottomSheetDialog
-import com.lawlett.domain.model.BalanceModel
-import com.lawlett.domain.model.CategoryIconModel
 import com.lawlett.financeapp.R
 import com.lawlett.financeapp.adapter.CategoryAdapter
-import com.lawlett.financeapp.adapter.CategoryIconAdapter
-import com.lawlett.financeapp.databinding.FragmentBalanceBinding
 import com.lawlett.financeapp.databinding.FragmentChangeBalanceSheetDialogBinding
 import com.lawlett.financeapp.presenter.ChangeBalancePresenter
+import com.lawlett.financeapp.utils.checkIcon
 import com.lawlett.financeapp.utils.checkNumber
-import com.lawlett.financeapp.utils.toast
+import com.lawlett.financeapp.utils.checkNumberToZero
 import com.lawlett.view.ChangeBalanceView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -31,7 +27,7 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
     private lateinit var adapter: CategoryAdapter
 
     private var icon = 0
-    var iconName = ""
+    private var iconName = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,39 +63,76 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
     }
 
     override fun initClickers() {
-        var amount = ""
+        var amount: String
         with(binding) {
             when (tag) {
                 getString(R.string.cost) -> {
                     applyBtn.setOnClickListener {
                         amount = amountEd.text.toString()
                         if (amount.isNotBlank()) {
-                            if (checkNumber(icon)) {
-                                result.createCost(amount, icon, iconName)
-                                dismiss()
+                            if (checkNumber(amount.toInt())) {
+                                if (checkNumberToZero(amount.toInt())) {
+                                    if (amount.subSequence(0, 1) != "0") {
+                                        if (checkIcon(icon)) {
+                                            result.createCost(amount, icon, iconName)
+                                            dismiss()
+                                        } else
+                                            toast(
+                                                getString(R.string.choose_category)
+                                            )
+                                    } else
+                                        toast(getString(R.string.number_not_zero))
+                                } else
+                                    toast(
+                                        getString(R.string.number_not_zero)
+                                    )
                             } else
-                                toast(requireContext(), getString(R.string.choose_category))
+                                toast(
+                                    getString(R.string.not_negative_number)
+                                )
                         } else
-                            toast(requireContext(), getString(R.string.enter_amount))
+                            toast(
+                                getString(R.string.enter_amount)
+                            )
                     }
                 }
                 getString(R.string.income) -> {
                     applyBtn.setOnClickListener {
                         amount = amountEd.text.toString()
                         if (amount.isNotBlank()) {
-                            if (checkNumber(icon)) {
-                                result.createIncome(amount, icon, iconName)
-                                dismiss()
+                            if (checkNumber(amount.toInt())) {
+                                if (checkNumberToZero(amount.toInt())) {
+                                    if (amount.subSequence(0, 1) != "0") {
+                                        if (checkIcon(icon)) {
+                                            result.createIncome(amount, icon, iconName)
+                                            dismiss()
+                                        } else
+                                            toast(
+                                                getString(R.string.choose_category)
+                                            )
+                                    } else
+                                        toast(getString(R.string.number_not_zero))
+                                } else
+                                    toast(
+                                        getString(R.string.number_not_zero)
+                                    )
                             } else
-                                toast(requireContext(), getString(R.string.choose_category))
+                                toast(
+                                    getString(R.string.not_negative_number)
+                                )
                         } else
-                            toast(requireContext(), getString(R.string.enter_amount))
+                            toast(
+                                getString(R.string.enter_amount)
+                            )
                     }
                 }
             }
         }
     }
 
+    private fun toast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+    }
 
     override fun closeDialog() {
         dismiss()

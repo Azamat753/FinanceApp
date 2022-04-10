@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">FinanceApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="income">Доход</string>
     <string name="cost">Расход</string>
@@ -25,4 +24,8 @@
     <string name="December">Декабрь</string>
     <string name="choose_category">Пожалуйста выберите категорию!</string>
     <string name="enter_amount">Введите сумму!</string>
+    <string name="not_cost">Нет расходов</string>
+    <string name="not_income">Нет дохода</string>
+    <string name="not_negative_number">Число не может быть отрицательным!</string>
+    <string name="number_not_zero">Число не может быть 0!</string>
 </resources>
