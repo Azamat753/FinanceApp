@@ -61,6 +61,7 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
 
     private lateinit var adapter: CategoryAdapter
 
+
     private var icon = 0
     private var iconName = ""
 
@@ -79,6 +80,7 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
     private fun initAdapter() {
         binding.categoryRecycler.adapter = adapter
     }
+
 
     private fun setupUI() {
         with(binding) {
@@ -110,7 +112,7 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
                 getString(R.string.cost) -> {
                     applyBtn.setOnClickListener {
                         amount = amountEd.text.toString()
-                        presenter.createCost(amount, icon, iconName, date, month)
+                        presenter.createCostToWarning(amount, icon, iconName, date, month)
                     }
                 }
                 getString(R.string.income) -> {
@@ -148,6 +150,17 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
         toast(getString(R.string.enter_amount))
     }
 
+    override fun negativeWarning(
+        amount: String,
+        icon: Int,
+        iconName: String,
+        date: String,
+        month: String
+    ) {
+        result.getTempData(amount, icon, iconName, date, month)
+    }
+
+
     override fun click(name: String, icon: Int) {
         this.icon = icon
         iconName = name
@@ -166,5 +179,13 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
 
     interface Result {
         fun updateData()
+        fun getTempData(
+            amount: String,
+            icon: Int,
+            iconName: String,
+            date: String,
+            month: String
+        )
     }
+
 }

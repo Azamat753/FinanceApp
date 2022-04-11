@@ -11,10 +11,13 @@ import javax.inject.Inject
 class BalancePresenter @Inject constructor(
     private val getIncomeUseCase: GetIncomeUseCase,
     private val getIncomeListUseCase: GetIncomeListUseCase,
-    private val getCostListUseCase: GetCostListUseCase
+    private val getCostListUseCase: GetCostListUseCase,
+    private val saveCostUseCase: SaveCostUseCase
 ) : BasePresenter<BalanceView>() {
 
-    fun getIncome(): BalanceModel = getIncomeUseCase.getIncome()
+    fun getIncome(): BalanceModel {
+        return getIncomeUseCase.getIncome()
+    }
 
     fun getIncomeList(): List<BalanceModel> = getIncomeListUseCase.getIncomeList()
 
@@ -28,6 +31,11 @@ class BalancePresenter @Inject constructor(
 
     fun checkIncomeList(incomeList: List<BalanceModel>) =
         if (incomeList.isEmpty()) viewState.emptyIncome() else viewState.txtIncome()
+
+    fun createCost(amount: String, icon: Int, iconName: String, date: String, month: String) {
+        saveCostUseCase.saveCost(amount, icon, iconName, date, month)
+        initDate()
+    }
 }
 
 

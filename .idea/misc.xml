@@ -7,6 +7,8 @@
         <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/bg_black_light.xml" value="0.1" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/bg_black_red.xml" value="0.1" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/bg_bot.xml" value="0.1935" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/bg_dialog.xml" value="0.1" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/bg_green.xml" value="0.1" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/history_selector.xml" value="0.1935" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/home_selector.xml" value="0.1935" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/ic_briefcase.xml" value="0.1935" />
@@ -15,16 +17,17 @@
         <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/red_corner_background.xml" value="0.1935" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/drawable/txt_selector.xml" value="0.1935" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/activity_main.xml" value="0.20521590423257802" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/dialog_warning.xml" value="0.2" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_balance.xml" value="0.2" />
-        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_category.xml" value="0.20521590423257802" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_category.xml" value="0.176" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_change_balance_sheet_dialog.xml" value="0.4" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_history.xml" value="0.20222317229585293" />
-        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_month.xml" value="0.20521590423257802" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_month.xml" value="0.1" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_plan.xml" value="0.1" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_balance.xml" value="0.264" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_category_icon.xml" value="0.136" />
-        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_cost.xml" value="0.136" />
-        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_income.xml" value="0.20222317229585293" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_cost.xml" value="0.1" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_income.xml" value="0.1" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/menu/main.xml" value="0.20521590423257802" />
         <entry key="..\:/Code/FinanceApp/core/src/main/res/drawable/bg_black_light.xml" value="0.1" />
         <entry key="..\:/Code/FinanceApp/core/src/main/res/drawable/ic_briefcase.xml" value="0.1935" />

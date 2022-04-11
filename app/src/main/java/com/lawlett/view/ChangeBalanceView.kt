@@ -11,4 +11,11 @@ interface ChangeBalanceView : MvpView {
     fun notNegative()
     fun notIcon()
     fun notEmpty()
+    fun negativeWarning(
+        amount: String,
+        icon: Int,
+        iconName: String,
+        date: String,
+        month: String
+    )
 }

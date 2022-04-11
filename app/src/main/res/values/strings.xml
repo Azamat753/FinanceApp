@@ -28,4 +28,7 @@
     <string name="not_income">Нет дохода</string>
     <string name="not_negative_number">Число не может быть отрицательным!</string>
     <string name="number_not_zero">Число не может быть 0!</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="cancel">Отмена</string>
+    <string name="check_balance">Внимание баланс \n будет ниже 0!</string>
 </resources>

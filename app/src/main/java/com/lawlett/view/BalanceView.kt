@@ -11,4 +11,5 @@ interface BalanceView : MvpView {
     fun emptyCost()
     fun txtIncome()
     fun txtCost()
+    fun balanceNegative()
 }

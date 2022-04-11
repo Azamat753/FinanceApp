@@ -38,24 +38,24 @@ class BalanceRepositoryImpl @Inject constructor(
         runBlocking {
             launch {
                 val list = balanceDao.getAllList()
-                if (list.isNotEmpty()) {
-                    for (item in list) {
-                        income = income + item.income.toInt()
-                        cost = cost + item.cost.toInt()
+                    if (list.isNotEmpty()) {
+                        for (item in list) {
+                            income = income + item.income.toInt()
+                            cost = cost + item.cost.toInt()
+                        }
+                        balance = income - cost
+                        model = BalanceModel(
+                            income = income.toString(),
+                            cost = cost.toString(),
+                            balance = balance.toString()
+                        )
+                    } else {
+                        model = BalanceModel(
+                            income = "0",
+                            cost = "0",
+                            balance = "0"
+                        )
                     }
-                    balance = income - cost
-                    model = BalanceModel(
-                        income = income.toString(),
-                        cost = cost.toString(),
-                        balance = balance.toString()
-                    )
-                } else {
-                    model = BalanceModel(
-                        income = "0",
-                        cost = "0",
-                        balance = "0"
-                    )
-                }
             }
         }
 

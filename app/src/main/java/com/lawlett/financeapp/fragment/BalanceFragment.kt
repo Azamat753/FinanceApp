@@ -8,6 +8,7 @@ import com.lawlett.financeapp.R
 import com.lawlett.financeapp.adapter.CostAdapter
 import com.lawlett.financeapp.adapter.IncomeAdapter
 import com.lawlett.financeapp.databinding.FragmentBalanceBinding
+import com.lawlett.financeapp.dialog.DialogWarning
 import com.lawlett.financeapp.presenter.BalancePresenter
 import com.lawlett.financeapp.sheetdialog.ChangeBalanceSheetDialogFragment
 import com.lawlett.view.BalanceView
@@ -24,7 +25,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), BalanceView,
-    ChangeBalanceSheetDialogFragment.Result {
+    ChangeBalanceSheetDialogFragment.Result, DialogWarning.Result {
     private val binding: FragmentBalanceBinding by viewBinding()
 
     @InjectPresenter
@@ -35,6 +36,8 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     private var day = ""
     private var month = ""
     private lateinit var costAdapter: CostAdapter
+
+    private lateinit var dialog: DialogWarning
 
     @Inject
     lateinit var hiltPresenter: BalancePresenter
@@ -65,6 +68,7 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     override
     fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initDialog()
         initModel()
         initAdapter()
         initClickers()
@@ -73,6 +77,11 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         initData()
         initView()
     }
+
+    private fun initDialog() {
+        dialog = DialogWarning(requireActivity(), this)
+    }
+
 
     private fun initView() {
         val temp = "$day $month"
@@ -112,9 +121,7 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         binding.costRecycler.adapter = costAdapter
     }
 
-    private fun initData() {
-        presenter.initDate()
-    }
+    private fun initData() = presenter.initDate()
 
     private fun initClickers() {
         with(binding) {
@@ -134,7 +141,6 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     }
 
     override fun initDate() {
-        Log.e("ABOBA", "DATA")
         initAdapterIncome(presenter.getIncomeList())
         initAdapterCost(presenter.getCostList())
         initModel()
@@ -158,6 +164,10 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         binding.costListTitle.text = getString(R.string.cost)
     }
 
+    override fun balanceNegative() {
+        dialog.show()
+    }
+
     private fun initAdapterIncome(list: List<BalanceModel>) {
         reverse(list)
         incomeAdapter.addModel(list)
@@ -168,7 +178,20 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         costAdapter.addModel(list)
     }
 
-    override fun updateData() {
-        initData()
+    override fun updateData() = initData()
+
+    override fun getTempData(
+        amount: String,
+        icon: Int,
+        iconName: String,
+        date: String,
+        month: String
+    ) {
+        dialog.open(amount, icon, iconName, date, month)
+    }
+
+
+    override fun confirm(amount: String, icon: Int, iconName: String, date: String, month: String) {
+        presenter.createCost(amount, icon, iconName, date, month)
     }
 }
