@@ -8,29 +8,68 @@ import com.lawlett.financeapp.R
 import com.lawlett.financeapp.adapter.CategoryAdapter
 import com.lawlett.financeapp.databinding.FragmentChangeBalanceSheetDialogBinding
 import com.lawlett.financeapp.presenter.ChangeBalancePresenter
-import com.lawlett.financeapp.utils.checkIcon
-import com.lawlett.financeapp.utils.checkNumber
-import com.lawlett.financeapp.utils.checkNumberToZero
 import com.lawlett.view.ChangeBalanceView
 import dagger.hilt.android.AndroidEntryPoint
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ChangeBalanceSheetDialogFragment(private val result: Result) :
+class ChangeBalanceSheetDialogFragment :
     BaseBottomSheetDialog<FragmentChangeBalanceSheetDialogBinding>(
         FragmentChangeBalanceSheetDialogBinding::inflate
     ), ChangeBalanceView, CategoryAdapter.Result {
+    private var day = ""
+
+    private var month = ""
+
+    private var date = ""
+
+    private lateinit var dayFormat: DateFormat
+
+    private lateinit var currentDate: Date
+
+    private lateinit var calendar: Calendar
+
+    private val monthNames: Array<String>
+        get() = arrayOf(
+            "Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Сентябрь",
+            "Октябрь",
+            "Ноябрь",
+            "Декабрь"
+        )
 
 
     @Inject
     lateinit var hiltPresenter: ChangeBalancePresenter
+
+    @InjectPresenter
+    lateinit var presenter: ChangeBalancePresenter
+
     private lateinit var adapter: CategoryAdapter
 
     private var icon = 0
     private var iconName = ""
 
+    @ProvidePresenter
+    fun providePresenter(): ChangeBalancePresenter {
+        return hiltPresenter
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initTime()
         setupUI()
         initAdapter()
     }
@@ -69,61 +108,13 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
                 getString(R.string.cost) -> {
                     applyBtn.setOnClickListener {
                         amount = amountEd.text.toString()
-                        if (amount.isNotBlank()) {
-                            if (checkNumber(amount.toInt())) {
-                                if (checkNumberToZero(amount.toInt())) {
-                                    if (amount.subSequence(0, 1) != "0") {
-                                        if (checkIcon(icon)) {
-                                            result.createCost(amount, icon, iconName)
-                                            dismiss()
-                                        } else
-                                            toast(
-                                                getString(R.string.choose_category)
-                                            )
-                                    } else
-                                        toast(getString(R.string.number_not_zero))
-                                } else
-                                    toast(
-                                        getString(R.string.number_not_zero)
-                                    )
-                            } else
-                                toast(
-                                    getString(R.string.not_negative_number)
-                                )
-                        } else
-                            toast(
-                                getString(R.string.enter_amount)
-                            )
+                        presenter.createCost(amount, icon, iconName, date, month)
                     }
                 }
                 getString(R.string.income) -> {
                     applyBtn.setOnClickListener {
                         amount = amountEd.text.toString()
-                        if (amount.isNotBlank()) {
-                            if (checkNumber(amount.toInt())) {
-                                if (checkNumberToZero(amount.toInt())) {
-                                    if (amount.subSequence(0, 1) != "0") {
-                                        if (checkIcon(icon)) {
-                                            result.createIncome(amount, icon, iconName)
-                                            dismiss()
-                                        } else
-                                            toast(
-                                                getString(R.string.choose_category)
-                                            )
-                                    } else
-                                        toast(getString(R.string.number_not_zero))
-                                } else
-                                    toast(
-                                        getString(R.string.number_not_zero)
-                                    )
-                            } else
-                                toast(
-                                    getString(R.string.not_negative_number)
-                                )
-                        } else
-                            toast(
-                                getString(R.string.enter_amount)
-                            )
+                        presenter.createIncome(amount, icon, iconName, date, month)
                     }
                 }
             }
@@ -138,13 +129,35 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
         dismiss()
     }
 
+    override fun notZero() {
+        toast(getString(R.string.number_not_zero))
+    }
+
+    override fun notNegative() {
+        toast(getString(R.string.not_negative_number))
+    }
+
+    override fun notIcon() {
+        toast(getString(R.string.choose_category))
+    }
+
+    override fun notEmpty() {
+        toast(getString(R.string.enter_amount))
+    }
+
     override fun click(name: String, icon: Int) {
         this.icon = icon
         iconName = name
     }
 
-    interface Result {
-        fun createIncome(amount: String, icon: Int, iconName: String)
-        fun createCost(amount: String, icon: Int, iconName: String)
+    private fun initTime() {
+        currentDate = Date()
+        calendar = Calendar.getInstance()
+        dayFormat = SimpleDateFormat("dd", Locale.getDefault())
+        val yearFormat: DateFormat = SimpleDateFormat("yyyy", Locale.getDefault())
+        month = monthNames[calendar[Calendar.MONTH]]
+        day = dayFormat.format(currentDate)
+        val year = yearFormat.format(currentDate)
+        date = "$day $month $year"
     }
 }

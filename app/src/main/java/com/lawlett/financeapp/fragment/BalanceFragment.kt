@@ -23,8 +23,7 @@ import java.util.Collections.reverse
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), BalanceView,
-    ChangeBalanceSheetDialogFragment.Result {
+class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), BalanceView {
     private val binding: FragmentBalanceBinding by viewBinding()
 
     @InjectPresenter
@@ -119,13 +118,13 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     private fun initClickers() {
         with(binding) {
             incomeLayout.setOnClickListener {
-                ChangeBalanceSheetDialogFragment(this@BalanceFragment).show(
+                ChangeBalanceSheetDialogFragment().show(
                     requireActivity().supportFragmentManager,
                     getString(R.string.income)
                 )
             }
             costLayout.setOnClickListener {
-                ChangeBalanceSheetDialogFragment(this@BalanceFragment).show(
+                ChangeBalanceSheetDialogFragment().show(
                     requireActivity().supportFragmentManager,
                     getString(R.string.cost)
                 )
@@ -142,22 +141,18 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     }
 
     override fun emptyIncome() {
-        Log.e("ABOBA", "EmptyIncome")
         binding.incomeListTitle.text = getString(R.string.not_income)
     }
 
     override fun emptyCost() {
-        Log.e("ABOBA", "EmptyCost")
         binding.costListTitle.text = getString(R.string.not_cost)
     }
 
     override fun txtIncome() {
-        Log.e("ABOBA", "Income")
         binding.incomeListTitle.text = getString(R.string.income)
     }
 
     override fun txtCost() {
-        Log.e("ABOBA", "Cost")
         binding.costListTitle.text = getString(R.string.cost)
     }
 
@@ -170,10 +165,4 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         reverse(list)
         costAdapter.addModel(list)
     }
-
-    override fun createIncome(amount: String, icon: Int, iconName: String) =
-        presenter.saveIncome(amount, icon, iconName, date, month)
-
-    override fun createCost(amount: String, icon: Int, iconName: String) =
-        presenter.saveCost(amount, icon, iconName, date, month)
 }

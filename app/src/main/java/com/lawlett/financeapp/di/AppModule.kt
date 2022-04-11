@@ -1,10 +1,7 @@
 package com.lawlett.financeapp.di
 
 import com.lawlett.domain.BalanceRepository
-import com.lawlett.domain.usecase.FillCostIconUseCase
-import com.lawlett.domain.usecase.FillIconsUseCase
-import com.lawlett.domain.usecase.GetIncomeUseCase
-import com.lawlett.domain.usecase.SaveIncomeUseCase
+import com.lawlett.domain.usecase.*
 import com.lawlett.financeapp.presenter.ChangeBalancePresenter
 import dagger.Module
 import dagger.Provides
@@ -18,9 +15,16 @@ object AppModule {
     @Provides
     fun provideChangeBalancePresenter(
         fillIconsUseCase: FillIconsUseCase,
-        fillCostIconUseCase: FillCostIconUseCase
+        fillCostIconUseCase: FillCostIconUseCase,
+        saveCostUseCase: SaveCostUseCase,
+        saveIncomeUseCase: SaveIncomeUseCase
     ): ChangeBalancePresenter {
-        return ChangeBalancePresenter(fillIconsUseCase, fillCostIconUseCase)
+        return ChangeBalancePresenter(
+            fillIconsUseCase,
+            fillCostIconUseCase,
+            saveCostUseCase,
+            saveIncomeUseCase
+        )
     }
 
     @Provides
@@ -43,4 +47,8 @@ object AppModule {
         return FillCostIconUseCase(balanceRepository)
     }
 
+    @Provides
+    fun saveCostUseCase(balanceRepository: BalanceRepository): SaveCostUseCase {
+        return SaveCostUseCase(balanceRepository)
+    }
 }
