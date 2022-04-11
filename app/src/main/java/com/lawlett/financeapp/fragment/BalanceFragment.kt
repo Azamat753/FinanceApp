@@ -23,7 +23,8 @@ import java.util.Collections.reverse
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), BalanceView {
+class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), BalanceView,
+    ChangeBalanceSheetDialogFragment.Result {
     private val binding: FragmentBalanceBinding by viewBinding()
 
     @InjectPresenter
@@ -118,13 +119,13 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     private fun initClickers() {
         with(binding) {
             incomeLayout.setOnClickListener {
-                ChangeBalanceSheetDialogFragment().show(
+                ChangeBalanceSheetDialogFragment(this@BalanceFragment).show(
                     requireActivity().supportFragmentManager,
                     getString(R.string.income)
                 )
             }
             costLayout.setOnClickListener {
-                ChangeBalanceSheetDialogFragment().show(
+                ChangeBalanceSheetDialogFragment(this@BalanceFragment).show(
                     requireActivity().supportFragmentManager,
                     getString(R.string.cost)
                 )
@@ -133,6 +134,7 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     }
 
     override fun initDate() {
+        Log.e("ABOBA", "DATA")
         initAdapterIncome(presenter.getIncomeList())
         initAdapterCost(presenter.getCostList())
         initModel()
@@ -164,5 +166,9 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     private fun initAdapterCost(list: List<BalanceModel>) {
         reverse(list)
         costAdapter.addModel(list)
+    }
+
+    override fun updateData() {
+        initData()
     }
 }

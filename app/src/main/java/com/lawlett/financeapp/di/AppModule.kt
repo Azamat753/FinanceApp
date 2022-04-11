@@ -2,6 +2,7 @@ package com.lawlett.financeapp.di
 
 import com.lawlett.domain.BalanceRepository
 import com.lawlett.domain.usecase.*
+import com.lawlett.financeapp.presenter.BalancePresenter
 import com.lawlett.financeapp.presenter.ChangeBalancePresenter
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ object AppModule {
         fillIconsUseCase: FillIconsUseCase,
         fillCostIconUseCase: FillCostIconUseCase,
         saveCostUseCase: SaveCostUseCase,
-        saveIncomeUseCase: SaveIncomeUseCase
+        saveIncomeUseCase: SaveIncomeUseCase,
     ): ChangeBalancePresenter {
         return ChangeBalancePresenter(
             fillIconsUseCase,

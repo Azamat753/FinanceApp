@@ -18,7 +18,7 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ChangeBalanceSheetDialogFragment :
+class ChangeBalanceSheetDialogFragment(private val result: Result) :
     BaseBottomSheetDialog<FragmentChangeBalanceSheetDialogBinding>(
         FragmentChangeBalanceSheetDialogBinding::inflate
     ), ChangeBalanceView, CategoryAdapter.Result {
@@ -26,7 +26,9 @@ class ChangeBalanceSheetDialogFragment :
 
     private var month = ""
 
+
     private var date = ""
+
 
     private lateinit var dayFormat: DateFormat
 
@@ -127,6 +129,7 @@ class ChangeBalanceSheetDialogFragment :
 
     override fun closeDialog() {
         dismiss()
+        result.updateData()
     }
 
     override fun notZero() {
@@ -159,5 +162,9 @@ class ChangeBalanceSheetDialogFragment :
         day = dayFormat.format(currentDate)
         val year = yearFormat.format(currentDate)
         date = "$day $month $year"
+    }
+
+    interface Result {
+        fun updateData()
     }
 }

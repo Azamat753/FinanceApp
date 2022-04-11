@@ -56,15 +56,15 @@ open class MvpBottomSheetDialogFragment : BottomSheetDialogFragment() {
         var anyParentIsRemoving = false
         var parent: Fragment? = parentFragment
         while (!anyParentIsRemoving && parent != null) {
-            anyParentIsRemoving = parent.isRemoving()
-            parent = parent.getParentFragment()
+            anyParentIsRemoving = parent.isRemoving
+            parent = parent.parentFragment
         }
         if (isRemoving || anyParentIsRemoving) {
             getMvpDelegate().onDestroy()
         }
     }
 
-    fun getMvpDelegate(): MvpDelegate<*> {
+    private fun getMvpDelegate(): MvpDelegate<*> {
         if (mMvpDelegate == null) {
             mMvpDelegate = MvpDelegate(this)
         }
