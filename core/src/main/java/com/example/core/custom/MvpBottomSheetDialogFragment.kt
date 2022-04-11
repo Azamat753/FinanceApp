@@ -64,9 +64,6 @@ open class MvpBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    /**
-     * @return The [MvpDelegate] being used by this Fragment.
-     */
     fun getMvpDelegate(): MvpDelegate<*> {
         if (mMvpDelegate == null) {
             mMvpDelegate = MvpDelegate(this)
