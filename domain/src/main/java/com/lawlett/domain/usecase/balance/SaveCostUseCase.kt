@@ -1,24 +1,24 @@
-package com.lawlett.domain.usecase
+package com.lawlett.domain.usecase.balance
 
-import com.lawlett.domain.BalanceRepository
+import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.domain.model.BalanceModel
+import javax.inject.Inject
 
-class SaveIncomeUseCase(private val repository: BalanceRepository) {
-
-    fun saveIncome(
+class SaveCostUseCase @Inject constructor(private val repository: BalanceRepository) {
+    fun saveCost(
         amount: String, icon: Int, iconName: String, date: String, month: String,
-    ) {
-        repository.saveIncome(
+
+        ) {
+        repository.saveCost(
             BalanceModel(
                 balance = "0",
-                income = amount,
+                income = "0",
                 icon = icon,
                 iconName = iconName,
                 date = date,
-                cost = "0",
+                cost = amount,
                 month = month
             )
         )
     }
-
 }

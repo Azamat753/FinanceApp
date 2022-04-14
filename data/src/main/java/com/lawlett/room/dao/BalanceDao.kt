@@ -17,7 +17,7 @@ interface BalanceDao {
     suspend fun updateBalance(balanceRoomModel: BalanceRoomModel)
 
     @Query("SELECT * FROM balanceModel")
-   fun getIncome(): Flow<List<BalanceRoomModel>>
+    fun getIncome(): Flow<List<BalanceRoomModel>>
 
     @Query("SELECT * FROM balanceModel")
     suspend fun getAllList(): List<BalanceRoomModel>

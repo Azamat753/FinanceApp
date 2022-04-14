@@ -4,21 +4,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.lawlett.financeapp.fragment.CategoryFragment
-import com.lawlett.financeapp.fragment.MonthFragment
 
 class PagerAdapter(
     fragmentManager: FragmentManager,
-    lifecycle: Lifecycle
+    lifecycle: Lifecycle,
 ) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
-    override fun getItemCount(): Int = 2
+    private val list: MutableList<Fragment> = mutableListOf()
+    override fun getItemCount(): Int = list.size
 
-    override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> CategoryFragment()
-            1 -> MonthFragment()
-            else -> CategoryFragment()
-        }
+    override fun createFragment(position: Int): Fragment = list[position]
+
+    fun add(index: Int, fragment: Fragment) {
+        list.add(index, fragment)
+        notifyItemChanged(index)
     }
 }

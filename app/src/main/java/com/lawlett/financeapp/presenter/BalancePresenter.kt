@@ -2,7 +2,10 @@ package com.lawlett.financeapp.presenter
 
 import com.example.core.base.BasePresenter
 import com.lawlett.domain.model.BalanceModel
-import com.lawlett.domain.usecase.*
+import com.lawlett.domain.usecase.balance.GetCostListUseCase
+import com.lawlett.domain.usecase.balance.GetIncomeListUseCase
+import com.lawlett.domain.usecase.balance.GetIncomeUseCase
+import com.lawlett.domain.usecase.balance.SaveCostUseCase
 import com.lawlett.view.BalanceView
 import moxy.InjectViewState
 import javax.inject.Inject

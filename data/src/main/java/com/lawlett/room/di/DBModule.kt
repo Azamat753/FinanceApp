@@ -2,7 +2,6 @@ package com.lawlett.room.di
 
 import android.content.Context
 import androidx.room.Room
-import com.lawlett.data.BalanceRepositoryImpl
 import com.lawlett.room.AppDataBase
 import dagger.Module
 import dagger.Provides
@@ -38,5 +37,13 @@ object DBModule {
     @Provides
     @Singleton
     fun provideBalanceDao(appDataBase: AppDataBase) = appDataBase.balanceDao()
+
+    @Provides
+    @Singleton
+    fun provideCategoryDao(appDataBase: AppDataBase) = appDataBase.categoryDao()
+
+    @Provides
+    @Singleton
+    fun provideMonthDao(appDataBase: AppDataBase) = appDataBase.monthDao()
 
 }

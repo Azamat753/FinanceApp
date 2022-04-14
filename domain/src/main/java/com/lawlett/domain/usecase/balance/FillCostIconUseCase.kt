@@ -1,6 +1,6 @@
-package com.lawlett.domain.usecase
+package com.lawlett.domain.usecase.balance
 
-import com.lawlett.domain.BalanceRepository
+import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.domain.model.CategoryIconModel
 import javax.inject.Inject
 

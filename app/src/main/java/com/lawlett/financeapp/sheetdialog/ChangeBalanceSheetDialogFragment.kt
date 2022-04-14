@@ -187,5 +187,4 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
             month: String
         )
     }
-
 }

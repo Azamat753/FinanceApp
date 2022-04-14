@@ -5,7 +5,6 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.lawlett.domain.model.CategoryIconModel
 import com.lawlett.financeapp.R
 import com.lawlett.financeapp.databinding.ItemCategoryIconBinding

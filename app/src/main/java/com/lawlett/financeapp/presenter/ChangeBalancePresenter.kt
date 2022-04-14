@@ -2,7 +2,7 @@ package com.lawlett.financeapp.presenter
 
 import com.example.core.base.BasePresenter
 import com.lawlett.domain.model.CategoryIconModel
-import com.lawlett.domain.usecase.*
+import com.lawlett.domain.usecase.balance.*
 import com.lawlett.financeapp.utils.checkIcon
 import com.lawlett.financeapp.utils.checkNumber
 import com.lawlett.financeapp.utils.checkNumberToZero

@@ -1,10 +1,11 @@
 package com.lawlett.data
 
-import com.lawlett.domain.BalanceRepository
+import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.model.CategoryIconModel
 import com.lawlett.room.dao.BalanceDao
-import com.lawlett.room.model.BalanceRoomModel
+import com.lawlett.utils.toModel
+import com.lawlett.utils.toRoomModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
@@ -37,7 +38,7 @@ class BalanceRepositoryImpl @Inject constructor(
         var balance: Int
         runBlocking {
             launch {
-                val list = balanceDao.getAllList()
+                    val list = balanceDao.getAllList()
                     if (list.isNotEmpty()) {
                         for (item in list) {
                             income = income + item.income.toInt()
@@ -66,10 +67,10 @@ class BalanceRepositoryImpl @Inject constructor(
         val list: MutableList<BalanceModel> = ArrayList()
         runBlocking {
             launch {
-                for (item in balanceDao.getAllList()) {
-                    if (item.cost != "0")
-                        list.add(item.toModel())
-                }
+                    for (item in balanceDao.getAllList()) {
+                        if (item.cost != "0")
+                            list.add(item.toModel())
+                    }
             }
         }
         return list
@@ -119,23 +120,4 @@ class BalanceRepositoryImpl @Inject constructor(
         return list
     }
 
-    private fun BalanceModel.toRoomModel(): BalanceRoomModel {
-        with(this) {
-            return BalanceRoomModel(
-                balance = balance!!,
-                cost = cost!!,
-                income = income!!,
-                date = date!!,
-                icon = icon!!,
-                iconName = iconName!!,
-                month = month!!
-            )
-        }
-    }
-
-    private fun BalanceRoomModel.toModel(): BalanceModel {
-        with(this) {
-            return BalanceModel(balance, cost, income, date, icon, iconName, month)
-        }
-    }
 }

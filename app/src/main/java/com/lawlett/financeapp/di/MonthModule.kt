@@ -1,7 +1,7 @@
 package com.lawlett.financeapp.di
 
-import com.lawlett.data.BalanceRepositoryImpl
-import com.lawlett.domain.repo.BalanceRepository
+import com.lawlett.data.MonthRepositoryImpl
+import com.lawlett.domain.repo.MonthRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -9,8 +9,7 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
-interface BalanceModule {
-
+interface MonthModule {
     @Binds
-    fun balance(balanceImpl: BalanceRepositoryImpl): BalanceRepository
+    fun category(monthRepositoryImpl: MonthRepositoryImpl): MonthRepository
 }

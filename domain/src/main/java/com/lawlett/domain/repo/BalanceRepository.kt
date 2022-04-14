@@ -1,4 +1,4 @@
-package com.lawlett.domain
+package com.lawlett.domain.repo
 
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.model.CategoryIconModel

@@ -1,8 +1,7 @@
 package com.lawlett.financeapp.di
 
-import com.lawlett.domain.BalanceRepository
-import com.lawlett.domain.usecase.*
-import com.lawlett.financeapp.presenter.BalancePresenter
+import com.lawlett.domain.repo.BalanceRepository
+import com.lawlett.domain.usecase.balance.*
 import com.lawlett.financeapp.presenter.ChangeBalancePresenter
 import dagger.Module
 import dagger.Provides
