@@ -2,10 +2,7 @@ package com.lawlett.financeapp.presenter
 
 import com.example.core.base.BasePresenter
 import com.lawlett.domain.model.BalanceModel
-import com.lawlett.domain.usecase.balance.GetCostListUseCase
-import com.lawlett.domain.usecase.balance.GetIncomeListUseCase
-import com.lawlett.domain.usecase.balance.GetIncomeUseCase
-import com.lawlett.domain.usecase.balance.SaveCostUseCase
+import com.lawlett.domain.usecase.balance.*
 import com.lawlett.view.BalanceView
 import moxy.InjectViewState
 import javax.inject.Inject
@@ -15,7 +12,7 @@ class BalancePresenter @Inject constructor(
     private val getIncomeUseCase: GetIncomeUseCase,
     private val getIncomeListUseCase: GetIncomeListUseCase,
     private val getCostListUseCase: GetCostListUseCase,
-    private val saveCostUseCase: SaveCostUseCase
+    private val createCostUseCase: CreateCostUseCase
 ) : BasePresenter<BalanceView>() {
 
     fun getIncome(): BalanceModel {
@@ -36,7 +33,17 @@ class BalancePresenter @Inject constructor(
         if (incomeList.isEmpty()) viewState.emptyIncome() else viewState.txtIncome()
 
     fun createCost(amount: String, icon: Int, iconName: String, date: String, month: String) {
-        saveCostUseCase.saveCost(amount, icon, iconName, date, month)
+        createCostUseCase.createCost(
+            BalanceModel(
+                balance = "0",
+                income = "0",
+                cost = amount,
+                icon = icon,
+                iconName = iconName,
+                date = date,
+                month = month
+            )
+        )
         initDate()
     }
 }

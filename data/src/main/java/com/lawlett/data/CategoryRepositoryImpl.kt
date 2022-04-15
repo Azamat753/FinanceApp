@@ -3,7 +3,7 @@ package com.lawlett.data
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.repo.CategoryRepository
 import com.lawlett.room.dao.CategoryDao
-import com.lawlett.utils.SUM_COST
+import com.lawlett.ext.SUM_COST
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject

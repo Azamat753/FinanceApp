@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="24dp"
+    android:layout_marginHorizontal="@dimen/twenty_four"
     android:background="@color/white"
-    android:padding="20dp">
+    android:padding="@dimen/twenty">
 
     <TextView
         android:id="@+id/dialog_txt_warning"
@@ -15,34 +15,34 @@
         android:text="@string/check_balance"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="@dimen/thirty_sp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/twenty"
         android:background="@drawable/bg_dialog"
         android:fontFamily="sans-serif-black"
         android:text="@string/confirm"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/twenty_four_sp"
         app:layout_constraintTop_toBottomOf="@id/dialog_txt_warning" />
 
     <Button
         android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/twenty"
         android:background="@drawable/bg_green"
         android:fontFamily="sans-serif-black"
         android:text="@string/cancel"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/twenty_four_sp"
         app:layout_constraintTop_toBottomOf="@id/btn_confirm" />
 </androidx.constraintlayout.widget.ConstraintLayout>

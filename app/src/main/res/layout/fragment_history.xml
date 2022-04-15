@@ -10,7 +10,7 @@
         android:id="@+id/txt_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="@dimen/twelve"
         android:layout_marginTop="@dimen/eighteen"
         android:fontFamily="sans-serif-black"
         android:text="@string/History"
@@ -25,16 +25,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/eighteen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_history"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/black"
-        app:tabIndicatorHeight="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_history" />
+        app:tabIndicatorHeight="@dimen/one" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/fragment_pager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/zero"
         android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

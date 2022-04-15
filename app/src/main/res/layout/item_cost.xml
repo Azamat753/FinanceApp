@@ -7,10 +7,10 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_margin="14dp"
+        android:layout_marginHorizontal="@dimen/twelve"
+        android:layout_margin="@dimen/fourteen"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="8dp">
+        app:cardElevation="@dimen/eight">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -18,10 +18,9 @@
 
             <ImageView
                 android:id="@+id/icon_img"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="14dp"
-                android:src="@drawable/ic_plus"
+                android:layout_width="@dimen/eighteen"
+                android:layout_height="@dimen/eighteen"
+                android:layout_marginStart="@dimen/fourteen"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -30,10 +29,9 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginStart="@dimen/forty"
+                android:layout_marginTop="@dimen/fourteen"
                 android:fontFamily="sans-serif-medium"
-                android:text="Еда"
                 android:textColor="@color/gray"
                 app:layout_constraintStart_toEndOf="@id/icon_img"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -42,11 +40,10 @@
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginStart="@dimen/forty"
+                android:layout_marginTop="@dimen/seven"
                 android:fontFamily="sans-serif-medium"
-                android:text="2 мая 2022"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="@dimen/fourteen"
                 android:textColor="@color/secondary_white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icon_img"
@@ -56,9 +53,8 @@
                 android:id="@+id/amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="@dimen/twenty_four"
                 android:fontFamily="sans-serif-medium"
-                android:text="1200"
                 android:textColor="@color/red"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

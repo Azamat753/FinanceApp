@@ -1,4 +1,4 @@
-package com.lawlett.utils
+package com.lawlett.ext
 
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.room.model.BalanceRoomModel
@@ -26,3 +26,10 @@ fun BalanceRoomModel.toModel(): BalanceModel {
 const val SUM_COST = "Общие расходы"
 
 const val RESULT = "Итог"
+
+fun checkIcon(number: Int): Boolean = number != 0
+
+
+fun checkNumber(number: Int): Boolean = number >= 0
+
+fun checkNumberToZero(number: Int): Boolean = number != 0

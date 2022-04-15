@@ -3,7 +3,7 @@ package com.lawlett.data
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.repo.MonthRepository
 import com.lawlett.room.dao.MonthDao
-import com.lawlett.utils.RESULT
+import com.lawlett.ext.RESULT
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject

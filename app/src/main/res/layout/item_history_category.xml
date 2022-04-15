@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="14dp"
-        android:layout_marginHorizontal="12dp"
+        android:layout_margin="@dimen/fourteen"
+        android:layout_marginHorizontal="@dimen/twelve"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="8dp">
+        app:cardElevation="@dimen/eight">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,19 +21,19 @@
                 android:id="@+id/icon_img"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginVertical="10dp"
-                android:layout_marginStart="6dp"
+                android:layout_marginVertical="@dimen/ten"
+                android:layout_marginStart="@dimen/six"
                 android:background="@drawable/bg_black"
-                android:padding="8dp"
+                android:padding="@dimen/eight"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/image_icon"
-                    android:layout_width="22dp"
+                    android:layout_width="@dimen/twenty_two"
                     android:layout_centerInParent="true"
-                    android:layout_height="22dp"
+                    android:layout_height="@dimen/twenty_two"
                     android:src="@drawable/ic_briefcase" />
             </RelativeLayout>
 
@@ -40,9 +41,9 @@
                 android:id="@+id/category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/twenty_four"
                 android:fontFamily="sans-serif-medium"
-                android:text="Еда"
+                tools:text="Еда"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icon_img"
@@ -53,9 +54,9 @@
                 android:id="@+id/amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="@dimen/twenty_four"
                 android:fontFamily="sans-serif-medium"
-                android:text="1200"
+                tools:text="1200"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

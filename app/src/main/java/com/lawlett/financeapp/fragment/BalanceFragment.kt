@@ -164,9 +164,7 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         binding.costListTitle.text = getString(R.string.cost)
     }
 
-    override fun balanceNegative() {
-        dialog.show()
-    }
+    override fun balanceNegative() = dialog.show()
 
     private fun initAdapterIncome(list: List<BalanceModel>) {
         reverse(list)
@@ -186,12 +184,9 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         iconName: String,
         date: String,
         month: String
-    ) {
-        dialog.open(amount, icon, iconName, date, month)
-    }
+    ) = dialog.open(amount, icon, iconName, date, month)
 
 
-    override fun confirm(amount: String, icon: Int, iconName: String, date: String, month: String) {
+    override fun confirm(amount: String, icon: Int, iconName: String, date: String, month: String) =
         presenter.createCost(amount, icon, iconName, date, month)
-    }
 }

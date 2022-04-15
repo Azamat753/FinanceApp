@@ -1,7 +1,9 @@
 package com.lawlett.financeapp.presenter
 
+import android.util.Log
 import com.example.core.base.BasePresenter
 import com.lawlett.domain.model.CategoryIconModel
+import com.lawlett.domain.model.CheckModel
 import com.lawlett.domain.usecase.balance.*
 import com.lawlett.financeapp.utils.checkIcon
 import com.lawlett.financeapp.utils.checkNumber
@@ -16,7 +18,7 @@ class ChangeBalancePresenter @Inject constructor(
     private val fillCostIconUseCase: FillCostIconUseCase,
     private val saveCostUseCase: SaveCostUseCase,
     private val saveIncomeUseCase: SaveIncomeUseCase,
-    private val getIncomeUseCase: GetIncomeUseCase
+    private val getIncomeUseCase: GetIncomeUseCase,
 ) : BasePresenter<ChangeBalanceView>() {
 
 
@@ -29,34 +31,43 @@ class ChangeBalancePresenter @Inject constructor(
         iconName: String,
         date: String,
         month: String
-    ) = when {
-        amount.isBlank() -> viewState.notEmpty()
-        !checkNumber(amount.toInt()) -> viewState.notNegative()
-        !checkNumberToZero(amount.toInt()) -> viewState.notZero()
-        amount.subSequence(0, 1) == "0" -> viewState.notZero()
-        !checkIcon(icon) -> viewState.notIcon()
-        getIncomeUseCase.getIncome().balance?.toInt()!! < amount.toInt() -> {
-            viewState.negativeWarning(amount, icon, iconName, date, month)
-            viewState.closeDialog()
-        }
-        else -> {
-            saveCostUseCase.saveCost(amount, icon, iconName, date, month)
-            viewState.closeDialog()
+    ) {
+        checkDataToCost(
+            saveCostUseCase.saveCost(
+                amount, icon, iconName, date, month,
+                getIncomeUseCase.getIncome()
+            ),
+            amount, icon, iconName, date, month
+        )
+    }
+
+    private fun checkDataToCost(
+        checkModel: CheckModel, amount: String,
+        icon: Int,
+        iconName: String,
+        date: String,
+        month: String
+    ) {
+        with(checkModel) {
+            when {
+                isBlank -> viewState.notEmpty()
+                isWarning -> {
+                    viewState.negativeWarning(amount, icon, iconName, date, month)
+                    viewState.closeDialog()
+                }
+                isIcon -> viewState.notIcon()
+                isZero -> viewState.notZero()
+                isNegative -> viewState.notNegative()
+                isSuccess -> viewState.closeDialog()
+            }
         }
     }
 
     fun createIncome(amount: String, icon: Int, iconName: String, date: String, month: String) {
-        when {
-            amount.isBlank() -> viewState.notEmpty()
-            !checkNumber(amount.toInt()) -> viewState.notNegative()
-            !checkNumberToZero(amount.toInt()) -> viewState.notZero()
-            amount.subSequence(0, 1) == "0" -> viewState.notZero()
-            !checkIcon(icon) -> viewState.notIcon()
-            else -> {
-                saveIncomeUseCase.saveIncome(amount, icon, iconName, date, month)
-                viewState.closeDialog()
-            }
-        }
+        checkDataToCost(
+            saveIncomeUseCase.saveIncome(amount, icon, iconName, date, month),
+            amount, icon, iconName, date, month
+        )
     }
 
 }

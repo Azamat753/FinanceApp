@@ -18,16 +18,14 @@ object AppModule {
         fillCostIconUseCase: FillCostIconUseCase,
         saveCostUseCase: SaveCostUseCase,
         saveIncomeUseCase: SaveIncomeUseCase,
-        getIncomeUseCase: GetIncomeUseCase
-    ): ChangeBalancePresenter {
-        return ChangeBalancePresenter(
-            fillIconsUseCase,
-            fillCostIconUseCase,
-            saveCostUseCase,
-            saveIncomeUseCase,
-            getIncomeUseCase
-        )
-    }
+        getIncomeUseCase: GetIncomeUseCase,
+    ): ChangeBalancePresenter = ChangeBalancePresenter(
+        fillIconsUseCase,
+        fillCostIconUseCase,
+        saveCostUseCase,
+        saveIncomeUseCase,
+        getIncomeUseCase
+    )
 
     @Provides
     fun provideFillUseCase(balanceRepository: BalanceRepository): FillIconsUseCase {

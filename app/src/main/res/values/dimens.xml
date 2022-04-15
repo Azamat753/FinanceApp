@@ -4,4 +4,24 @@
     <dimen name="zero">0dp</dimen>
     <dimen name="twenty">20dp</dimen>
     <dimen name="twenty_two">22sp</dimen>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="twelve">12dp</dimen>
+    <dimen name="ten_sp">10sp</dimen>
+    <dimen name="fourteen">14dp</dimen>
+    <dimen name="eight">8dp</dimen>
+    <dimen name="forty">40dp</dimen>
+    <dimen name="seven">7dp</dimen>
+    <dimen name="twenty_four">24dp</dimen>
+    <dimen name="six">6dp</dimen>
+    <dimen name="eighteen_sp">18sp</dimen>
+    <dimen name="fourteen_sp">14sp</dimen>
+    <dimen name="sixteen_sp">16sp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="thirty">30dp</dimen>
+    <dimen name="sixteen">16dp</dimen>
+    <dimen name="twenty_two_sp">22sp</dimen>
+    <dimen name="two_three_five">235dp</dimen>
+    <dimen name="twenty_sp">20sp</dimen>
+    <dimen name="thirty_sp">30sp</dimen>
+    <dimen name="twenty_four_sp">24sp</dimen>
 </resources>

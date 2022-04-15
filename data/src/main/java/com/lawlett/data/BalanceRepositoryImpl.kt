@@ -3,24 +3,105 @@ package com.lawlett.data
 import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.model.CategoryIconModel
+import com.lawlett.domain.model.CheckModel
+import com.lawlett.ext.*
 import com.lawlett.room.dao.BalanceDao
-import com.lawlett.utils.toModel
-import com.lawlett.utils.toRoomModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
-
 
 class BalanceRepositoryImpl @Inject constructor(
     private val balanceDao: BalanceDao
 ) : BalanceRepository {
 
-    override fun saveIncome(balanceModel: BalanceModel) {
-        val model = balanceModel.toRoomModel()
+    override fun saveIncome(
+        amount: String,
+        icon: Int,
+        iconName: String,
+        date: String,
+        month: String
+    ): CheckModel {
+        var isBlank = false
+        var isZero = false
+        var isNegative = false
+        var isIcon = false
+        var isSuccess = false
         runBlocking {
             launch {
-                balanceDao.insertBalance(model)
+                when {
+                    amount.isBlank() -> isBlank = true
+                    !checkNumber(amount.toInt()) -> isNegative = true
+                    !checkNumberToZero(amount.toInt()) -> isZero = true
+                    amount.subSequence(0, 1) == "0" -> isZero = true
+                    !checkIcon(icon) -> isIcon = true
+                    else -> {
+                        isSuccess = true
+                        balanceDao.insertBalance(
+                            BalanceModel
+                                (
+                                balance = "0",
+                                cost = "0",
+                                icon = icon,
+                                iconName = iconName,
+                                date = date,
+                                month = month,
+                                income = amount
+                            ).toRoomModel()
+                        )
+                    }
+                }
             }
         }
+        return CheckModel(
+            isBlank = isBlank, isZero = isZero,
+            isNegative = isNegative, isIcon = isIcon,
+            isSuccess = isSuccess
+        )
+    }
+
+    override fun saveCost(
+        amount: String,
+        icon: Int,
+        iconName: String,
+        date: String,
+        month: String,
+        balanceModel: BalanceModel
+    ): CheckModel {
+        var isBlank = false
+        var isZero = false
+        var isNegative = false
+        var isWarning = false
+        var isIcon = false
+        var isSuccess = false
+        runBlocking {
+            launch {
+                when {
+                    amount.isBlank() -> isBlank = true
+                    !checkNumber(amount.toInt()) -> isNegative = true
+                    !checkNumberToZero(amount.toInt()) -> isZero = true
+                    amount.subSequence(0, 1) == "0" -> isZero = true
+                    !checkIcon(icon) -> isIcon = true
+                    balanceModel.balance?.toInt()!! < amount.toInt() -> isWarning = true
+                    else -> {
+                        isSuccess = true
+                        balanceDao.insertBalance(
+                            BalanceModel(
+                                balance = "0",
+                                cost = amount,
+                                icon = icon,
+                                iconName = iconName,
+                                date = date,
+                                month = month,
+                                income = "0"
+                            ).toRoomModel()
+                        )
+                    }
+                }
+            }
+        }
+        return CheckModel(
+            isBlank,
+            isZero, isNegative, isWarning, isIcon, isSuccess
+        )
     }
 
     override fun saveCost(balanceModel: BalanceModel) {
@@ -38,25 +119,25 @@ class BalanceRepositoryImpl @Inject constructor(
         var balance: Int
         runBlocking {
             launch {
-                    val list = balanceDao.getAllList()
-                    if (list.isNotEmpty()) {
-                        for (item in list) {
-                            income = income + item.income.toInt()
-                            cost = cost + item.cost.toInt()
-                        }
-                        balance = income - cost
-                        model = BalanceModel(
-                            income = income.toString(),
-                            cost = cost.toString(),
-                            balance = balance.toString()
-                        )
-                    } else {
-                        model = BalanceModel(
-                            income = "0",
-                            cost = "0",
-                            balance = "0"
-                        )
+                val list = balanceDao.getAllList()
+                if (list.isNotEmpty()) {
+                    for (item in list) {
+                        income = income + item.income.toInt()
+                        cost = cost + item.cost.toInt()
                     }
+                    balance = income - cost
+                    model = BalanceModel(
+                        income = income.toString(),
+                        cost = cost.toString(),
+                        balance = balance.toString()
+                    )
+                } else {
+                    model = BalanceModel(
+                        income = "0",
+                        cost = "0",
+                        balance = "0"
+                    )
+                }
             }
         }
 
@@ -67,10 +148,24 @@ class BalanceRepositoryImpl @Inject constructor(
         val list: MutableList<BalanceModel> = ArrayList()
         runBlocking {
             launch {
-                    for (item in balanceDao.getAllList()) {
-                        if (item.cost != "0")
-                            list.add(item.toModel())
-                    }
+                for (item in balanceDao.getAllList()) {
+                    if (item.cost != "0")
+                        list.add(item.toModel())
+                }
+            }
+        }
+        return list
+    }
+
+
+    override fun getIncomeList(): List<BalanceModel> {
+        val list: MutableList<BalanceModel> = ArrayList()
+        runBlocking {
+            launch {
+                for (item in balanceDao.getAllList()) {
+                    if (item.income != "0")
+                        list.add(item.toModel())
+                }
             }
         }
         return list
@@ -107,17 +202,5 @@ class BalanceRepositoryImpl @Inject constructor(
         return listIcon
     }
 
-    override fun getIncomeList(): List<BalanceModel> {
-        val list: MutableList<BalanceModel> = ArrayList()
-        runBlocking {
-            launch {
-                for (item in balanceDao.getAllList()) {
-                    if (item.income != "0")
-                        list.add(item.toModel())
-                }
-            }
-        }
-        return list
-    }
-
 }
+
