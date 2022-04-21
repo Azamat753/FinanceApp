@@ -1,7 +1,6 @@
 package com.lawlett.financeapp.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.financeapp.R

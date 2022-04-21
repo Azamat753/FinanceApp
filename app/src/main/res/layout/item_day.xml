@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="10dp">
+
+        <TextView
+            android:id="@+id/item_txt_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_black"
+            android:textSize="@dimen/eighteen_sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="16may" />
+
+        <TextView
+            android:id="@+id/item_txt_planner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sixteen"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/gray_black"
+            android:textSize="@dimen/fourteen_sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_txt_day"
+            tools:text="@string/planner" />
+
+        <TextView
+            android:id="@+id/item_txt_planner_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="@dimen/eighteen_sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/item_txt_planner"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="+10000" />
+
+        <TextView
+            android:id="@+id/item_txt_free_lan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/gray_black"
+            android:textSize="@dimen/fourteen_sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_txt_planner"
+            tools:text="@string/free_lan" />
+
+        <TextView
+            android:id="@+id/item_txt_free_lan_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="@dimen/eighteen_sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/item_txt_free_lan"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="+10000" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

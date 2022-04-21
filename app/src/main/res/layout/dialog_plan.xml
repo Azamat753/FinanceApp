@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_new_sum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/eighteen"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/new_sum"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/eighteen_sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_choose_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty_four"
+        android:background="@drawable/bg_btn_date"
+        android:fontFamily="sans-serif-black"
+        android:padding="@dimen/twenty"
+        android:text="@string/choose_date"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sixteen_sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_new_sum" />
+
+    <EditText
+        android:id="@+id/edit_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/twenty_four"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/title_source"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btn_choose_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edit_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty_four"
+        android:hint="@string/expected_sum"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_title" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/sixteen"
+        android:layout_marginTop="@dimen/fifty"
+        android:background="@drawable/bg_btn_accept"
+        android:text="@string/accept"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sixteen_sp"
+        app:layout_constraintTop_toBottomOf="@id/edit_sum" />
+</androidx.constraintlayout.widget.ConstraintLayout>

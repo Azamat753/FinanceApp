@@ -1,6 +1,6 @@
 package com.lawlett.domain.model
 
-data class CheckModel(
+data class CheckModelToBalance(
     val isBlank: Boolean = false,
     val isZero: Boolean = false,
     val isNegative: Boolean = false,

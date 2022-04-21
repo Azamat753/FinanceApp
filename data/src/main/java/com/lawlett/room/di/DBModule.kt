@@ -46,4 +46,12 @@ object DBModule {
     @Singleton
     fun provideMonthDao(appDataBase: AppDataBase) = appDataBase.monthDao()
 
+    @Provides
+    @Singleton
+    fun providePlanDao(appDataBase: AppDataBase) = appDataBase.planDao()
+
+    @Provides
+    @Singleton
+    fun providePlanMonthDao(appDataBase: AppDataBase) = appDataBase.monthPlanDao()
+
 }

@@ -3,9 +3,10 @@ package com.lawlett.data
 import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.model.CategoryIconModel
-import com.lawlett.domain.model.CheckModel
+import com.lawlett.domain.model.CheckModelToBalance
 import com.lawlett.ext.*
 import com.lawlett.room.dao.BalanceDao
+import com.lawlett.room.model.BalanceRoomModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
@@ -19,7 +20,7 @@ class BalanceRepositoryImpl @Inject constructor(
         iconName: String,
         date: String,
         month: String
-    ): CheckModel {
+    ): CheckModelToBalance {
         var isBlank = false
         var isZero = false
         var isNegative = false
@@ -51,7 +52,7 @@ class BalanceRepositoryImpl @Inject constructor(
                 }
             }
         }
-        return CheckModel(
+        return CheckModelToBalance(
             isBlank = isBlank, isZero = isZero,
             isNegative = isNegative, isIcon = isIcon,
             isSuccess = isSuccess
@@ -65,7 +66,7 @@ class BalanceRepositoryImpl @Inject constructor(
         date: String,
         month: String,
         balanceModel: BalanceModel
-    ): CheckModel {
+    ): CheckModelToBalance {
         var isBlank = false
         var isZero = false
         var isNegative = false
@@ -84,7 +85,7 @@ class BalanceRepositoryImpl @Inject constructor(
                     else -> {
                         isSuccess = true
                         balanceDao.insertBalance(
-                            BalanceModel(
+                            BalanceRoomModel(
                                 balance = "0",
                                 cost = amount,
                                 icon = icon,
@@ -92,13 +93,13 @@ class BalanceRepositoryImpl @Inject constructor(
                                 date = date,
                                 month = month,
                                 income = "0"
-                            ).toRoomModel()
+                            )
                         )
                     }
                 }
             }
         }
-        return CheckModel(
+        return CheckModelToBalance(
             isBlank,
             isZero, isNegative, isWarning, isIcon, isSuccess
         )

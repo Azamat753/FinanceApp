@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/twelve"
+        android:layout_margin="@dimen/sixteen"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/twelve">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/sixteen">
+
+            <TextView
+                android:id="@+id/item_txt_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:fontFamily="sans-serif-black"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/eighteen_sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="May" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_day"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:listitem="@layout/item_day"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/item_txt_expected"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginVertical="@dimen/eighteen"
+                app:layout_constraintTop_toBottomOf="@id/item_txt_month" />
+
+            <TextView
+                android:id="@+id/item_txt_lacks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ten"
+                android:text="@string/lacks"
+                android:textColor="@color/gray_black"
+                android:textSize="@dimen/eighteen_sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/item_txt_lacks_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/black"
+                android:textSize="@dimen/eighteen_sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/item_txt_lacks"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="10000" />
+
+            <TextView
+                android:id="@+id/item_txt_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ten"
+                android:text="@string/now"
+                android:textColor="@color/gray_black"
+                android:textSize="@dimen/eighteen_sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/item_txt_lacks"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/item_txt_now_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/black"
+                android:textSize="@dimen/eighteen_sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/item_txt_now"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="46000" />
+
+            <TextView
+                android:id="@+id/item_txt_expected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ten"
+                android:text="@string/expected"
+                android:textColor="@color/gray_black"
+                android:textSize="@dimen/eighteen_sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/item_txt_now"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/item_txt_expected_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/black"
+                tools:text="100000"
+                android:textSize="@dimen/eighteen_sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/item_txt_expected"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

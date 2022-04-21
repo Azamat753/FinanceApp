@@ -33,3 +33,9 @@ fun checkIcon(number: Int): Boolean = number != 0
 fun checkNumber(number: Int): Boolean = number >= 0
 
 fun checkNumberToZero(number: Int): Boolean = number != 0
+
+const val BALANCE_ROOM = "balanceModel"
+
+const val PLAN_ROOM = "planModel"
+
+const val MONTH_PLAN_ROOM = "monthModel"

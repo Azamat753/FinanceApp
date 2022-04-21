@@ -2,7 +2,7 @@ package com.lawlett.domain.repo
 
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.model.CategoryIconModel
-import com.lawlett.domain.model.CheckModel
+import com.lawlett.domain.model.CheckModelToBalance
 
 interface BalanceRepository {
     fun saveIncome(
@@ -11,7 +11,7 @@ interface BalanceRepository {
         iconName: String,
         date: String,
         month: String
-    ): CheckModel
+    ): CheckModelToBalance
 
     fun saveCost(
         amount: String,
@@ -19,7 +19,7 @@ interface BalanceRepository {
         iconName: String,
         date: String,
         month: String, balanceModel: BalanceModel
-    ): CheckModel
+    ): CheckModelToBalance
 
     fun getIncome(): BalanceModel
     fun getCostList(): List<BalanceModel>

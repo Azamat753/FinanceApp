@@ -8,7 +8,6 @@
     <string name="green">#10AF7F</string>
     <string name="main">Главная</string>
     <string name="history">История</string>
-    <string name="plan">План</string>
     <string name="january">Январь</string>
     <string name="february">Февраль</string>
     <string name="march">Март</string>
@@ -35,4 +34,22 @@
     <string name="all_cost">Общие расходы</string>
     <string name="sum">Сумма</string>
     <string name="balance">Ваш баланс</string>
+    <string name="plan">План</string>
+    <string name="lacks">не хватает</string>
+    <string name="now">сейчас</string>
+    <string name="expected">ожидается</string>
+    <string name="planner">Planner+</string>
+    <string name="free_lan">Фриланс</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_month">Новый месяц</string>
+    <string name="now_month">На текущий месяц</string>
+    <string name="next_month">На следующий месяц</string>
+    <string name="choose_date">Выберите дату</string>
+    <string name="expected_sum">Ожидаемая сумма</string>
+    <string name="accept">Принять</string>
+    <string name="specify_date">Укажите дату!</string>
+    <string name="new_sum">Новая сумма</string>
+    <string name="title_source">Название источника</string>
+    <string name="enter_source">Введите источник!</string>
+    <string name="date_expected">Дата превышает ожидания</string>
 </resources>

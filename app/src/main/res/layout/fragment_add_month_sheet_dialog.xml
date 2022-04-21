@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_rounded_corners_top_14dp"
+    android:paddingVertical="@dimen/forty"
+    tools:context=".sheetdialog.AddMonthSheetDialog">
+
+    <TextView
+        android:id="@+id/txt_new_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_month"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/eighteen_sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radio_cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/twenty"
+        android:layout_marginTop="@dimen/thirty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_new_month">
+
+        <RadioButton
+            android:id="@+id/radio_now_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/black"
+            android:text="@string/now_month"
+            android:textColor="@color/black"
+            android:textSize="@dimen/eighteen_sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radio_next_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty_four"
+            android:buttonTint="@color/black"
+            android:text="@string/next_month"
+            android:textColor="@color/black"
+            android:textSize="@dimen/eighteen_sp"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/eighteen"
+        android:layout_marginTop="@dimen/thirty_six"
+        android:background="@drawable/bg_btn_date"
+        android:padding="@dimen/twenty_four"
+        android:text="@string/choose_date"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sixteen_sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_cont" />
+
+    <EditText
+        android:inputType="number"
+        android:id="@+id/edit_expected_sum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/eighteen"
+        android:layout_marginTop="@dimen/thirty_six"
+        android:hint="@string/expected_sum"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_date" />
+
+    <Button
+        android:id="@+id/btn_accept"
+        android:text="@string/accept"
+        android:textAllCaps="false"
+        android:textSize="@dimen/sixteen_sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/sixty"
+        android:layout_marginHorizontal="@dimen/twenty_two"
+        app:layout_constraintTop_toBottomOf="@id/edit_expected_sum"
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_btn_accept"
+        android:layout_height="wrap_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

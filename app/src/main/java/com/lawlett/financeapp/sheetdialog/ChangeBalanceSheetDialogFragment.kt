@@ -83,6 +83,7 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
 
 
     private fun setupUI() {
+
         with(binding) {
             when (tag) {
                 getString(R.string.cost) -> {
@@ -135,7 +136,7 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
     }
 
     override fun notZero() {
-        toast(getString(R.string.number_not_zero))
+        (getString(R.string.number_not_zero))
     }
 
     override fun notNegative() {

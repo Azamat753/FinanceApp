@@ -2,8 +2,9 @@ package com.lawlett.room.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.lawlett.ext.BALANCE_ROOM
 
-@Entity(tableName = "balanceModel")
+@Entity(tableName = BALANCE_ROOM)
 class BalanceRoomModel(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,

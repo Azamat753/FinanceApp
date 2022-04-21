@@ -1,13 +1,9 @@
 package com.lawlett.financeapp.presenter
 
-import android.util.Log
 import com.example.core.base.BasePresenter
 import com.lawlett.domain.model.CategoryIconModel
-import com.lawlett.domain.model.CheckModel
+import com.lawlett.domain.model.CheckModelToBalance
 import com.lawlett.domain.usecase.balance.*
-import com.lawlett.financeapp.utils.checkIcon
-import com.lawlett.financeapp.utils.checkNumber
-import com.lawlett.financeapp.utils.checkNumberToZero
 import com.lawlett.view.ChangeBalanceView
 import moxy.InjectViewState
 import javax.inject.Inject
@@ -42,7 +38,7 @@ class ChangeBalancePresenter @Inject constructor(
     }
 
     private fun checkDataToCost(
-        checkModel: CheckModel, amount: String,
+        checkModel: CheckModelToBalance, amount: String,
         icon: Int,
         iconName: String,
         date: String,

@@ -15,9 +15,7 @@ class BalancePresenter @Inject constructor(
     private val createCostUseCase: CreateCostUseCase
 ) : BasePresenter<BalanceView>() {
 
-    fun getIncome(): BalanceModel {
-        return getIncomeUseCase.getIncome()
-    }
+    fun getIncome(): BalanceModel = getIncomeUseCase.getIncome()
 
     fun getIncomeList(): List<BalanceModel> = getIncomeListUseCase.getIncomeList()
 
