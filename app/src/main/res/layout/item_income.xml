@@ -43,7 +43,7 @@
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/fourteen"
+                android:layout_marginStart="@dimen/forty"
                 android:layout_marginTop="@dimen/seven"
                 android:fontFamily="sans-serif-medium"
                 tools:text="2 мая 2022"
