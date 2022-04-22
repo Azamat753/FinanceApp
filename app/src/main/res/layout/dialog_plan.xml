@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/txt_new_sum"
@@ -35,29 +37,50 @@
 
     <EditText
         android:id="@+id/edit_title"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/twenty_four"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_empty"
         android:hint="@string/title_source"
+        android:padding="@dimen/six"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_black"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/btn_choose_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_choose_month" />
+
+    <View
+        android:id="@+id/edit_view"
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/one"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/edit_title"
+        app:layout_constraintStart_toStartOf="@id/edit_title"
+        app:layout_constraintTop_toBottomOf="@id/edit_title" />
 
     <EditText
         android:id="@+id/edit_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/twenty_four"
+        android:background="@drawable/edit_empty"
         android:hint="@string/expected_sum"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_black"
         android:textStyle="bold"
+        android:padding="@dimen/six"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_title" />
+
+    <View
+        android:layout_width="@dimen/zero"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/edit_sum"
+        app:layout_constraintStart_toStartOf="@id/edit_sum"
+        app:layout_constraintTop_toBottomOf="@id/edit_sum" />
 
     <Button
         android:id="@+id/btn_ok"
