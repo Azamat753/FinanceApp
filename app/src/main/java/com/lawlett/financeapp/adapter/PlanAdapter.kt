@@ -1,6 +1,5 @@
 package com.lawlett.financeapp.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,7 +28,6 @@ class PlanAdapter(
 
         fun initAdapter(position: Int) {
             val dayAdapter = DayAdapter()
-            Log.e("ABOBA","Temp =======      ${resultA.getDay(monthList[position].id)}" )
             dayAdapter.addList(resultA.getDay(monthList[position].id))
             binding.rvDay.adapter = dayAdapter
         }

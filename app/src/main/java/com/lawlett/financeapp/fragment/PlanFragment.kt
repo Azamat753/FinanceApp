@@ -17,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import java.util.Collections.reverse
 import javax.inject.Inject
 
 @AndroidEntryPoint

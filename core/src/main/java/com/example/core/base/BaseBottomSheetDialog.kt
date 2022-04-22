@@ -8,11 +8,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.viewbinding.ViewBinding
 import com.example.core.custom.MvpBottomSheetDialogFragment
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import moxy.MvpAppCompatDialogFragment
 
 abstract class BaseBottomSheetDialog<T : ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T) :
     MvpBottomSheetDialogFragment() {

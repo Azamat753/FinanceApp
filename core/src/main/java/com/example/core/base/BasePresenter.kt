@@ -12,7 +12,7 @@ open class BasePresenter<View : MvpView?> : MvpPresenter<View>(), CoroutineScope
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 
-    var job = Job()
+    private var job = Job()
 
     override fun onDestroy() {
         super.onDestroy()

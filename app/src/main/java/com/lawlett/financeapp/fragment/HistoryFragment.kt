@@ -2,8 +2,6 @@ package com.lawlett.financeapp.fragment
 
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import com.google.android.material.tabs.TabLayoutMediator
 import com.lawlett.financeapp.R
