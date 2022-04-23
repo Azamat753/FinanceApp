@@ -66,10 +66,11 @@
         android:layout_marginTop="@dimen/twenty_four"
         android:background="@drawable/edit_empty"
         android:hint="@string/expected_sum"
+        android:inputType="number"
+        android:padding="@dimen/six"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_black"
         android:textStyle="bold"
-        android:padding="@dimen/six"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_title" />

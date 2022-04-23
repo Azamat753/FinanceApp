@@ -157,7 +157,6 @@ class PlanRepositoryImpl @Inject constructor(
                     for (hash in hashList) {
                         val temp = planDao.getListPlanToId(id, hash)
                         if (temp.size - 2 >= 0) {
-
                             model.add(
                                 PlanModel(
                                     month = temp[temp.size - 1].month,

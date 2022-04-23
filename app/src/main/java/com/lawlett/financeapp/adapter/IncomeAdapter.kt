@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.lawlett.domain.model.BalanceModel
-import com.lawlett.financeapp.databinding.ItemCostBinding
 import com.lawlett.financeapp.databinding.ItemIncomeBinding
 
 class IncomeAdapter : RecyclerView.Adapter<IncomeAdapter.CostViewHolder>() {
