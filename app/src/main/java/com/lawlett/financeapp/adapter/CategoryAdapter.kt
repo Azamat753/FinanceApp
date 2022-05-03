@@ -5,6 +5,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.lawlett.domain.model.CategoryIconModel
 import com.lawlett.financeapp.R
 import com.lawlett.financeapp.databinding.ItemCategoryIconBinding
@@ -15,10 +16,10 @@ class CategoryAdapter(private val list: List<CategoryIconModel>, private val res
 
     inner class CategoryViewHolder(val binding: ItemCategoryIconBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(name: String) {
-            binding.name.text = name
+        fun onBind(categoryIconModel: CategoryIconModel) {
+            binding.name.text = categoryIconModel.name
+            binding.iconImg.load(categoryIconModel.icon)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
@@ -56,7 +57,7 @@ class CategoryAdapter(private val list: List<CategoryIconModel>, private val res
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        holder.onBind(list[position].name)
+        holder.onBind(list[position])
         holder.itemView.setOnClickListener {
             notifyItemChanged(position, 1)
             result.click(list[position].name, list[position].icon)

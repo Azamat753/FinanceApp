@@ -1,9 +1,9 @@
 package com.lawlett.data
 
-import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.domain.model.CategoryIconModel
 import com.lawlett.domain.model.CheckModelToBalance
+import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.ext.*
 import com.lawlett.room.dao.BalanceDao
 import com.lawlett.room.model.BalanceRoomModel
@@ -177,13 +177,13 @@ class BalanceRepositoryImpl @Inject constructor(
         val listIcon = arrayListOf<CategoryIconModel>()
         with(listIcon) {
             add(CategoryIconModel(R.drawable.ic_briefcase_green, "Работа"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_green, "Образование"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_green, "Одежда"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_green, "Питание"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_green, "Транспорт"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_green, "Здоровье"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_green, "Развлечение"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_green, "Прочее"))
+            add(CategoryIconModel(R.drawable.ic_book_green, "Образование"))
+            add(CategoryIconModel(R.drawable.ic_shirt_green, "Одежда"))
+            add(CategoryIconModel(R.drawable.ic_food_green, "Питание"))
+            add(CategoryIconModel(R.drawable.ic_car_green, "Транспорт"))
+            add(CategoryIconModel(R.drawable.ic_health_green, "Здоровье"))
+            add(CategoryIconModel(R.drawable.ic_game_green, "Развлечение"))
+            add(CategoryIconModel(R.drawable.ic_other_green, "Прочее"))
         }
         return listIcon
     }
@@ -192,13 +192,13 @@ class BalanceRepositoryImpl @Inject constructor(
         val listIcon = arrayListOf<CategoryIconModel>()
         with(listIcon) {
             add(CategoryIconModel(R.drawable.ic_briefcase_red, "Работа"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_red, "Образование"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_red, "Одежда"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_red, "Питание"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_red, "Транспорт"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_red, "Здоровье"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_red, "Развлечение"))
-            add(CategoryIconModel(R.drawable.ic_briefcase_red, "Прочее"))
+            add(CategoryIconModel(R.drawable.ic_book_red, "Образование"))
+            add(CategoryIconModel(R.drawable.ic_shirt_red, "Одежда"))
+            add(CategoryIconModel(R.drawable.ic_food_red, "Питание"))
+            add(CategoryIconModel(R.drawable.ic_car_red, "Транспорт"))
+            add(CategoryIconModel(R.drawable.ic_health_red, "Здоровье"))
+            add(CategoryIconModel(R.drawable.ic_game_red, "Развлечение"))
+            add(CategoryIconModel(R.drawable.ic_other_red, "Прочее"))
         }
         return listIcon
     }
