@@ -44,7 +44,23 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
 
     private lateinit var incomeAdapter: IncomeAdapter
     private var date = ""
-    private val monthNames: ArrayList<String> = arrayListOf()
+
+    private val monthNames: ArrayList<String> by lazy {
+        arrayListOf(
+            getString(R.string.january),
+            getString(R.string.february),
+            getString(R.string.march),
+            getString(R.string.april),
+            getString(R.string.may),
+            getString(R.string.june),
+            getString(R.string.July),
+            getString(R.string.August),
+            getString(R.string.september),
+            getString(R.string.October),
+            getString(R.string.november),
+            getString(R.string.December)
+        )
+    }
 
     @ProvidePresenter
     fun providePresenter(): BalancePresenter {
@@ -54,7 +70,6 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     override
     fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initMonth()
         initDialog()
         initModel()
         initAdapter()
@@ -65,20 +80,6 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         initView()
     }
 
-    private fun initMonth() {
-        monthNames.add(requireContext().getString(R.string.january))
-        monthNames.add(requireContext().getString(R.string.february))
-        monthNames.add(requireContext().getString(R.string.march))
-        monthNames.add(requireContext().getString(R.string.april))
-        monthNames.add(requireContext().getString(R.string.may))
-        monthNames.add(requireContext().getString(R.string.june))
-        monthNames.add(requireContext().getString(R.string.July))
-        monthNames.add(requireContext().getString(R.string.August))
-        monthNames.add(requireContext().getString(R.string.september))
-        monthNames.add(requireContext().getString(R.string.October))
-        monthNames.add(requireContext().getString(R.string.november))
-        monthNames.add(requireContext().getString(R.string.December))
-    }
 
     private fun initDialog() {
         dialog = DialogWarning(requireActivity(), this)

@@ -34,14 +34,29 @@ class PlanDialog(
 
     private lateinit var listenerForDate: DatePickerDialog.OnDateSetListener
 
-    private val monthNames: ArrayList<String> = arrayListOf()
+    private val monthNames: ArrayList<String> by lazy {
+        arrayListOf(
+            context.getString(R.string.january),
+            context.getString(R.string.february),
+            context.getString(R.string.march),
+            context.getString(R.string.april),
+            context.getString(R.string.may),
+            context.getString(R.string.june),
+            context.getString(R.string.July),
+            context.getString(R.string.August),
+            context.getString(R.string.september),
+            context.getString(R.string.October),
+            context.getString(R.string.november),
+            context.getString(R.string.December)
+        )
+    }
+
     private lateinit var dialog: Dialog
 
     private lateinit var binding: DialogPlanBinding
 
     init {
         createDialog()
-        initMonth()
     }
 
     private fun createDialog() {
@@ -52,20 +67,6 @@ class PlanDialog(
         binding = DialogPlanBinding.bind(view)
     }
 
-    private fun initMonth() {
-        monthNames.add(context.getString(R.string.january))
-        monthNames.add(context.getString(R.string.february))
-        monthNames.add(context.getString(R.string.march))
-        monthNames.add(context.getString(R.string.april))
-        monthNames.add(context.getString(R.string.may))
-        monthNames.add(context.getString(R.string.june))
-        monthNames.add(context.getString(R.string.July))
-        monthNames.add(context.getString(R.string.August))
-        monthNames.add(context.getString(R.string.september))
-        monthNames.add(context.getString(R.string.October))
-        monthNames.add(context.getString(R.string.november))
-        monthNames.add(context.getString(R.string.December))
-    }
 
     fun initDialog(isMonth: Boolean, id: Int) {
         dialog.cancel()

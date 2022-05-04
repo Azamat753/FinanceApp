@@ -85,22 +85,25 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
 
 
     private fun setupUI() {
-
         with(binding) {
             when (tag) {
                 getString(R.string.cost) -> {
                     title.text = tag
                     applyBtn.setBackgroundResource(R.drawable.red_corner_background)
                     adapter = CategoryAdapter(
+                        requireContext(),
                         hiltPresenter.getCostIcon(),
-                        this@ChangeBalanceSheetDialogFragment
+                        this@ChangeBalanceSheetDialogFragment,
+                        getString(R.string.cost)
                     )
                 }
                 getString(R.string.income) -> {
                     applyBtn.setBackgroundResource(R.drawable.green_corner_background)
                     adapter = CategoryAdapter(
+                        requireContext(),
                         hiltPresenter.getCategoryIcon(),
-                        this@ChangeBalanceSheetDialogFragment
+                        this@ChangeBalanceSheetDialogFragment,
+                        getString(R.string.income)
                     )
                 }
             }

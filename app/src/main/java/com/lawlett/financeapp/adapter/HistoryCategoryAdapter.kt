@@ -14,9 +14,8 @@ class HistoryCategoryAdapter :
     inner class HistoryCategoryViewHolder(val binding: ItemHistoryCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(position: Int) {
-            val temp = "- ${list[position].cost}"
             binding.category.text = list[position].iconName
-            binding.amount.text = temp
+            binding.amount.text = list[position].cost
         }
 
     }

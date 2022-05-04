@@ -18,35 +18,42 @@ class CategoryRepositoryImpl @Inject constructor
         val originalList: MutableList<BalanceModel> = mutableListOf()
         val list = HashSet<String>()
         var cost: Int
+        var costToString: String
         runBlocking {
             launch {
-                    if (categoryDao.getListCategory().isNotEmpty()) {
-                        for (item in categoryDao.getListCategory()) {
-                            list.add(item)
-                        }
-                    }
-                    for (item in list) {
-                        cost = 0
-                        val temp = categoryDao.getListToCategory(item)
-                        for (ob in temp) {
-                            cost = cost + ob.cost.toInt()
-                        }
-                        balanceList.add(
-                            BalanceModel(
-                                cost = cost.toString(),
-                                iconName = item
-                            )
-                        )
-                    }
-                    for (item in balanceList) {
-                        if (item.cost != "0") {
-                            originalList.add(item)
-                        }
+                if (categoryDao.getListCategory().isNotEmpty()) {
+                    for (item in categoryDao.getListCategory()) {
+                        list.add(item)
                     }
                 }
-                if (getModel().cost != null)
-                    if (getModel().cost != "0")
-                        originalList.add(getModel())
+                for (item in list) {
+                    cost = 0
+                    costToString = ""
+                    val temp = categoryDao.getListToCategory(item)
+                    for (ob in temp) {
+                        cost = cost + ob.cost.toInt()
+                    }
+                    costToString = if (cost == 0) {
+                        cost.toString()
+                    } else {
+                        "-$cost"
+                    }
+                    balanceList.add(
+                        BalanceModel(
+                            cost = costToString,
+                            iconName = item
+                        )
+                    )
+                }
+                for (item in balanceList) {
+                    if (item.cost != "0") {
+                        originalList.add(item)
+                    }
+                }
+            }
+            if (getModel().cost != null)
+                if (getModel().cost != "0")
+                    originalList.add(getModel())
         }
         return originalList
     }
@@ -54,6 +61,7 @@ class CategoryRepositoryImpl @Inject constructor
     private fun getModel(): BalanceModel {
         var model = BalanceModel()
         var cost = 0
+        var costToString: String
         runBlocking {
             launch {
                 val list = categoryDao.getAllList()
@@ -61,8 +69,13 @@ class CategoryRepositoryImpl @Inject constructor
                     for (item in list) {
                         cost = cost + item.cost.toInt()
                     }
+                    costToString = if (cost == 0) {
+                        cost.toString()
+                    } else {
+                        "-$cost"
+                    }
                     model = BalanceModel(
-                        cost = cost.toString(),
+                        cost = costToString,
                         iconName = SUM_COST
                     )
                 }
