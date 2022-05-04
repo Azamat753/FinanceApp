@@ -19,15 +19,17 @@ class MonthRepositoryImpl @Inject constructor(
         var cost: Int
         var balance: Int
         var income: Int
+        var costToString: String
         runBlocking {
             launch {
-                    if (monthDao.getListMonth().isNotEmpty()) {
-                        for (item in monthDao.getListMonth()) {
-                            list.add(item)
-                        }
+                if (monthDao.getListMonth().isNotEmpty()) {
+                    for (item in monthDao.getListMonth()) {
+                        list.add(item)
                     }
+                }
 
                 for (item in list) {
+                    costToString = ""
                     cost = 0
                     income = 0
                     balance = 0
@@ -37,17 +39,22 @@ class MonthRepositoryImpl @Inject constructor(
                         income = income + lol.income.toInt()
                     }
                     balance = income - cost
+                    costToString = if (cost == 0) {
+                        cost.toString()
+                    } else {
+                        "-$cost"
+                    }
                     balanceList.add(
                         BalanceModel(
                             month = item,
                             balance = balance.toString(),
-                            cost = cost.toString()
+                            cost = costToString
                         )
                     )
                 }
                 if (getModel().cost != null)
                     if (getModel().cost != "0")
-                        balanceList.add(getModel())
+                    balanceList.add(getModel())
             }
         }
         return balanceList
@@ -58,6 +65,7 @@ class MonthRepositoryImpl @Inject constructor(
         var cost = 0
         var balance: Int
         var income = 0
+        var costToString = ""
         runBlocking {
             launch {
                 if (monthDao.getAllList().isNotEmpty()) {
@@ -66,10 +74,15 @@ class MonthRepositoryImpl @Inject constructor(
                         income = income + item.income.toInt()
                     }
                     balance = income - cost
+                    costToString = if (cost == 0) {
+                        cost.toString()
+                    } else {
+                        "-$cost"
+                    }
                     model = BalanceModel(
                         month = RESULT,
                         balance = balance.toString(),
-                        cost = cost.toString()
+                        cost = costToString
                     )
                 }
             }

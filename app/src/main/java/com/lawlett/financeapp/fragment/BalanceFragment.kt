@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Collections.reverse
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), BalanceView,
@@ -43,21 +44,7 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
 
     private lateinit var incomeAdapter: IncomeAdapter
     private var date = ""
-    private val monthNames: Array<String>
-        get() = arrayOf(
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"
-        )
+    private val monthNames: ArrayList<String> = arrayListOf()
 
     @ProvidePresenter
     fun providePresenter(): BalancePresenter {
@@ -67,6 +54,7 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     override
     fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initMonth()
         initDialog()
         initModel()
         initAdapter()
@@ -75,6 +63,21 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         initTime()
         initData()
         initView()
+    }
+
+    private fun initMonth() {
+        monthNames.add(requireContext().getString(R.string.january))
+        monthNames.add(requireContext().getString(R.string.february))
+        monthNames.add(requireContext().getString(R.string.march))
+        monthNames.add(requireContext().getString(R.string.april))
+        monthNames.add(requireContext().getString(R.string.may))
+        monthNames.add(requireContext().getString(R.string.june))
+        monthNames.add(requireContext().getString(R.string.July))
+        monthNames.add(requireContext().getString(R.string.August))
+        monthNames.add(requireContext().getString(R.string.september))
+        monthNames.add(requireContext().getString(R.string.October))
+        monthNames.add(requireContext().getString(R.string.november))
+        monthNames.add(requireContext().getString(R.string.December))
     }
 
     private fun initDialog() {

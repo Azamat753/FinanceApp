@@ -16,6 +16,7 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class ChangeBalanceSheetDialogFragment(private val result: Result) :
@@ -36,21 +37,22 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
 
     private lateinit var calendar: Calendar
 
-    private val monthNames: Array<String>
-        get() = arrayOf(
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"
+    private val monthNames: ArrayList<String> by lazy {
+        arrayListOf(
+            getString(R.string.january),
+            getString(R.string.february),
+            getString(R.string.march),
+            getString(R.string.april),
+            getString(R.string.may),
+            getString(R.string.june),
+            getString(R.string.July),
+            getString(R.string.August),
+            getString(R.string.september),
+            getString(R.string.October),
+            getString(R.string.november),
+            getString(R.string.December)
         )
+    }
 
 
     @Inject

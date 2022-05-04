@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class HistoryFragment : MvpAppCompatFragment(R.layout.fragment_history), HistoryView {
-    private val tabTitle = arrayOf("Категории", "Месяц")
+    private val tabTitle by lazy { arrayOf(getString(R.string.category), getString(R.string.month)) }
     private val binding: FragmentHistoryBinding by viewBinding()
     private lateinit var pagerAdapter: PagerAdapter
 

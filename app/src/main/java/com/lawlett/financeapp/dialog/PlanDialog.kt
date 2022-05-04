@@ -5,11 +5,10 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import com.lawlett.financeapp.R
 import com.lawlett.financeapp.databinding.DialogPlanBinding
 import java.util.*
+import kotlin.collections.ArrayList
 
 class PlanDialog(
     private val context: Context,
@@ -35,28 +34,14 @@ class PlanDialog(
 
     private lateinit var listenerForDate: DatePickerDialog.OnDateSetListener
 
-    private val monthNames: Array<String>
-        get() = arrayOf(
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"
-        )
-
+    private val monthNames: ArrayList<String> = arrayListOf()
     private lateinit var dialog: Dialog
 
     private lateinit var binding: DialogPlanBinding
 
     init {
         createDialog()
+        initMonth()
     }
 
     private fun createDialog() {
@@ -65,6 +50,21 @@ class PlanDialog(
         builder.setView(view)
         dialog = builder.create()
         binding = DialogPlanBinding.bind(view)
+    }
+
+    private fun initMonth() {
+        monthNames.add(context.getString(R.string.january))
+        monthNames.add(context.getString(R.string.february))
+        monthNames.add(context.getString(R.string.march))
+        monthNames.add(context.getString(R.string.april))
+        monthNames.add(context.getString(R.string.may))
+        monthNames.add(context.getString(R.string.june))
+        monthNames.add(context.getString(R.string.July))
+        monthNames.add(context.getString(R.string.August))
+        monthNames.add(context.getString(R.string.september))
+        monthNames.add(context.getString(R.string.October))
+        monthNames.add(context.getString(R.string.november))
+        monthNames.add(context.getString(R.string.December))
     }
 
     fun initDialog(isMonth: Boolean, id: Int) {
@@ -78,6 +78,7 @@ class PlanDialog(
         initMax(isMonth)
         initBtn(id)
         show()
+
     }
 
     private fun initBtn(id: Int) {
@@ -102,10 +103,9 @@ class PlanDialog(
 
     private fun initPicker() {
         datePicker = DatePickerDialog(
-            context, listenerForDate,
+            context, R.style.DialogTheme, listenerForDate,
             yearCalendar, monthCalendar, dayCalendar
         )
-        datePicker.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     private fun initCalendar() {

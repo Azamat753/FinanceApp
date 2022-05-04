@@ -42,21 +42,22 @@ class AddMonthSheetDialog(private val result: Result) :
 
     private lateinit var listenerForDate: DatePickerDialog.OnDateSetListener
 
-    private val monthNames: Array<String>
-        get() = arrayOf(
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"
+    private val monthNames: ArrayList<String> by lazy {
+        arrayListOf(
+            getString(R.string.january),
+            getString(R.string.february),
+            getString(R.string.march),
+            getString(R.string.april),
+            getString(R.string.may),
+            getString(R.string.june),
+            getString(R.string.July),
+            getString(R.string.August),
+            getString(R.string.september),
+            getString(R.string.October),
+            getString(R.string.november),
+            getString(R.string.December)
         )
+    }
 
     @Inject
     lateinit var hiltPresenter: AddMonthPresenter
@@ -96,10 +97,9 @@ class AddMonthSheetDialog(private val result: Result) :
 
     private fun initPicker() {
         datePicker = DatePickerDialog(
-            requireContext(), listenerForDate,
+            requireContext(), R.style.DialogTheme, listenerForDate,
             yearCalendar, monthCalendar, dayCalendar
         )
-        datePicker.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     private fun initListener() {

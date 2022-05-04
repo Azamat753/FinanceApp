@@ -18,8 +18,9 @@ class PlanAdapter(
     inner class PlanViewHolder(val binding: ItemPlanBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(position: Int) {
+            val month = "${monthList[position].month}(${monthList[position].day})"
             with(binding) {
-                itemTxtMonth.text = monthList[position].month
+                itemTxtMonth.text = month
                 itemTxtExpectedNumber.text = monthList[position].amount
                 itemTxtNowNumber.text = nowAmountList[position]
                 itemTxtLacksNumber.text = lackAmountList[position]

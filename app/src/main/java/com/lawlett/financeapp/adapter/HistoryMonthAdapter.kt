@@ -12,10 +12,9 @@ class HistoryMonthAdapter : RecyclerView.Adapter<HistoryMonthAdapter.HistoryMont
     inner class HistoryMonthViewHolder(val binding: ItemHistoryMonthBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(position: Int) {
-            val temp = "-${list[position].cost}"
             binding.txtMonth.text = list[position].month
             binding.amountBalance.text = list[position].balance
-            binding.amountCost.text = temp
+            binding.amountCost.text = list[position].cost
         }
 
     }

@@ -28,12 +28,12 @@
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_add_month_sheet_dialog.xml" value="0.264" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_balance.xml" value="0.2" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_category.xml" value="0.264" />
-        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_change_balance_sheet_dialog.xml" value="0.4" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_change_balance_sheet_dialog.xml" value="0.2" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_history.xml" value="0.11009174311926606" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_month.xml" value="0.2" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_plan.xml" value="0.176" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_balance.xml" value="0.264" />
-        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_category_icon.xml" value="0.136" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_category_icon.xml" value="0.264" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_cost.xml" value="0.264" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_day.xml" value="0.2" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_history_category.xml" value="0.4267161410018553" />
@@ -56,21 +56,6 @@
         <entry key="app/src/main/res/layout/fragment_change_balance_sheet_dialog.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/item_balance.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/item_category_icon.xml" value="0.37604166666666666" />
-        <entry key="core/src/main/res/drawable/ic_book_red.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_briefcase_green.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_briefcase_red.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_car_green.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_car_red.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_food_green.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_food_red.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_game_green.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_game_red.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_health_green.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_health_red.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_other_green.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_other_red.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_shirt_green.xml" value="0.235" />
-        <entry key="core/src/main/res/drawable/ic_shirt_red.xml" value="0.235" />
         <entry key="core/src/main/res/drawable/ic_work.xml" value="0.2305" />
       </map>
     </option>

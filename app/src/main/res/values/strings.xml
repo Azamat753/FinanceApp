@@ -52,4 +52,6 @@
     <string name="title_source">Название источника</string>
     <string name="enter_source">Введите источник!</string>
     <string name="date_expected">Дата превышает ожидания</string>
+    <string name="category">Категории</string>
+    <string name="month">Месяц</string>
 </resources>

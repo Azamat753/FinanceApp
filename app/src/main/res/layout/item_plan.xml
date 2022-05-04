@@ -8,8 +8,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/twelve"
         android:layout_margin="@dimen/sixteen"
+        android:layout_marginHorizontal="@dimen/twelve"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="@dimen/twelve">
 
@@ -33,15 +33,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_day"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:listitem="@layout/item_day"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@id/item_txt_expected"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/eighteen"
-                app:layout_constraintTop_toBottomOf="@id/item_txt_month" />
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/item_txt_expected"
+                app:layout_constraintTop_toBottomOf="@id/item_txt_month"
+                tools:listitem="@layout/item_day" />
 
             <TextView
                 android:id="@+id/item_txt_lacks"
@@ -107,10 +105,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
                 android:textColor="@color/black"
-                tools:text="100000"
                 android:textSize="@dimen/eighteen_sp"
                 app:layout_constraintBaseline_toBaselineOf="@id/item_txt_expected"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="100000" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

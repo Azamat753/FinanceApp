@@ -19,36 +19,7 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/radio_cont"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/twenty"
-        android:layout_marginTop="@dimen/thirty"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_new_month">
 
-        <RadioButton
-            android:id="@+id/radio_now_month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/black"
-            android:text="@string/now_month"
-            android:textColor="@color/black"
-            android:textSize="@dimen/eighteen_sp"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:id="@+id/radio_next_month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/twenty_four"
-            android:buttonTint="@color/black"
-            android:text="@string/next_month"
-            android:textColor="@color/black"
-            android:textSize="@dimen/eighteen_sp"
-            android:textStyle="bold" />
-    </RadioGroup>
 
     <Button
         android:id="@+id/btn_date"
@@ -64,7 +35,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/sixteen_sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_cont" />
+        app:layout_constraintTop_toBottomOf="@id/txt_new_month" />
 
     <EditText
         android:inputType="number"
@@ -88,6 +59,8 @@
         android:textColor="@color/white"
         android:layout_marginTop="@dimen/sixty"
         android:layout_marginHorizontal="@dimen/twenty_two"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintTop_toBottomOf="@id/edit_expected_sum"
         android:layout_width="match_parent"
         android:background="@drawable/bg_btn_accept"
