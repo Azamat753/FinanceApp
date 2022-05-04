@@ -44,7 +44,7 @@ class DialogWarning(private val activity: Activity, private val result: Result) 
 
     fun show() = dialog.show()
 
-    fun dismiss() = dialog.dismiss()
+    private fun dismiss() = dialog.dismiss()
 
     interface Result {
         fun confirm(

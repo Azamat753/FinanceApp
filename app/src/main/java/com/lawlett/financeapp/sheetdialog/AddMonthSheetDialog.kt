@@ -1,8 +1,6 @@
 package com.lawlett.financeapp.sheetdialog
 
 import android.app.DatePickerDialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.widget.Toast
 import com.example.core.base.BaseBottomSheetDialog
 import com.lawlett.financeapp.R
