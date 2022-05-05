@@ -30,8 +30,8 @@ class BalanceRepositoryImpl @Inject constructor(
             launch {
                 when {
                     amount.isBlank() -> isBlank = true
-                    !checkNumber(amount.toInt()) -> isNegative = true
-                    !checkNumberToZero(amount.toInt()) -> isZero = true
+                    !checkNumber(amount.toLong()) -> isNegative = true
+                    !checkNumberToZero(amount.toLong()) -> isZero = true
                     amount.subSequence(0, 1) == "0" -> isZero = true
                     !checkIcon(icon) -> isIcon = true
                     else -> {
@@ -77,8 +77,8 @@ class BalanceRepositoryImpl @Inject constructor(
             launch {
                 when {
                     amount.isBlank() -> isBlank = true
-                    !checkNumber(amount.toInt()) -> isNegative = true
-                    !checkNumberToZero(amount.toInt()) -> isZero = true
+                    !checkNumber(amount.toLong()) -> isNegative = true
+                    !checkNumberToZero(amount.toLong()) -> isZero = true
                     amount.subSequence(0, 1) == "0" -> isZero = true
                     !checkIcon(icon) -> isIcon = true
                     balanceModel.balance?.toInt()!! < amount.toInt() -> isWarning = true
@@ -115,16 +115,16 @@ class BalanceRepositoryImpl @Inject constructor(
 
     override fun getIncome(): BalanceModel {
         var model = BalanceModel()
-        var income = 0
-        var cost = 0
-        var balance: Int
+        var income: Long = 0
+        var cost: Long = 0
+        var balance: Long
         runBlocking {
             launch {
                 val list = balanceDao.getAllList()
                 if (list.isNotEmpty()) {
                     for (item in list) {
-                        income = income + item.income.toInt()
-                        cost = cost + item.cost.toInt()
+                        income = income + item.income.toLong()
+                        cost = cost + item.cost.toLong()
                     }
                     balance = income - cost
                     model = BalanceModel(

@@ -41,8 +41,8 @@ class PlanRepositoryImpl @Inject constructor(
                 when {
                     amount.isBlank() -> isBlankToAmount = true
                     source.isBlank() -> isBlankToSource = true
-                    !checkNumber(amount.toInt()) -> isNegative = true
-                    !checkNumberToZero(amount.toInt()) -> isZero = true
+                    !checkNumber(amount.toLong()) -> isNegative = true
+                    !checkNumberToZero(amount.toLong()) -> isZero = true
                     amount.subSequence(0, 1) == "0" -> isZero = true
                     date.isBlank() -> isBlankToDate = true
                     checkDate(id, day) -> isExpectedToDate = true
@@ -77,8 +77,8 @@ class PlanRepositoryImpl @Inject constructor(
         var model = TempPlanModel()
         val nowList = mutableListOf<String>()
         val lacksList = mutableListOf<String>()
-        var amount: Int
-        var lacks: Int
+        var amount: Long
+        var lacks: Long
         val list = mutableListOf<PlanMonthModel>()
         runBlocking {
             launch {
@@ -86,9 +86,9 @@ class PlanRepositoryImpl @Inject constructor(
                     amount = 0
                     list.add(planMonthDao.getModelToId(id).toPlanModel())
                     for (item in planDao.getDateList(planMonthDao.getModelToId(id).id)) {
-                        amount = amount + item.amount.toInt()
+                        amount = amount + item.amount.toLong()
                     }
-                    lacks = planMonthDao.getModelToId(id).amount.toInt() - amount
+                    lacks = planMonthDao.getModelToId(id).amount.toLong() - amount
                     lacksList.add(lacks.toString())
                     nowList.add(amount.toString())
                 }
@@ -119,8 +119,8 @@ class PlanRepositoryImpl @Inject constructor(
                     amount.isBlank() -> isBlankToAmount = true
                     month.isBlank() -> isBlankToDate = true
                     date.isBlank() -> isBlankToDate = true
-                    !checkNumber(amount.toInt()) -> isNegative = true
-                    !checkNumberToZero(amount.toInt()) -> isZero = true
+                    !checkNumber(amount.toLong()) -> isNegative = true
+                    !checkNumberToZero(amount.toLong()) -> isZero = true
                     amount.subSequence(0, 1) == "0" -> isZero = true
                     else -> {
                         isSuccess = true

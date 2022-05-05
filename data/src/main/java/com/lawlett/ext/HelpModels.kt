@@ -30,9 +30,9 @@ const val RESULT = "Итог"
 fun checkIcon(number: Int): Boolean = number != 0
 
 
-fun checkNumber(number: Int): Boolean = number >= 0
+fun checkNumber(number: Long): Boolean = number >= 0.toLong()
 
-fun checkNumberToZero(number: Int): Boolean = number != 0
+fun checkNumberToZero(number: Long): Boolean = number != 0.toLong()
 
 const val BALANCE_ROOM = "balanceModel"
 
