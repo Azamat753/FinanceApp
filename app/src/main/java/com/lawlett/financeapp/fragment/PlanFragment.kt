@@ -69,7 +69,8 @@ class PlanFragment : MvpAppCompatFragment(R.layout.fragment_plan), PlanView, Pla
     override fun initData() {
         addModelAdapter(
             presenter.getModel().monthList,
-            presenter.getModel().nowAmount, presenter.getModel().lacksAmount
+            presenter.getModel().nowAmount,
+            presenter.getModel().lacksAmount
         )
     }
 

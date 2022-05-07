@@ -81,7 +81,7 @@ class BalanceRepositoryImpl @Inject constructor(
                     !checkNumberToZero(amount.toLong()) -> isZero = true
                     amount.subSequence(0, 1) == "0" -> isZero = true
                     !checkIcon(icon) -> isIcon = true
-                    balanceModel.balance?.toInt()!! < amount.toInt() -> isWarning = true
+                    balanceModel.balance?.toLong()!! < amount.toLong() -> isWarning = true
                     else -> {
                         isSuccess = true
                         balanceDao.insertBalance(

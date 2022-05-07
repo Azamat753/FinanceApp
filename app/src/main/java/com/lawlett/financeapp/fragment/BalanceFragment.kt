@@ -1,7 +1,10 @@
 package com.lawlett.financeapp.fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.FrameLayout
 import com.lawlett.domain.model.BalanceModel
 import com.lawlett.financeapp.R
 import com.lawlett.financeapp.adapter.CostAdapter
@@ -10,8 +13,12 @@ import com.lawlett.financeapp.databinding.FragmentBalanceBinding
 import com.lawlett.financeapp.dialog.DialogWarning
 import com.lawlett.financeapp.presenter.BalancePresenter
 import com.lawlett.financeapp.sheetdialog.ChangeBalanceSheetDialogFragment
+import com.lawlett.financeapp.utils.Pref
+import com.lawlett.financeapp.utils.setSpotLightBuilder
+import com.lawlett.financeapp.utils.setSpotLightTarget
 import com.lawlett.view.BalanceView
 import com.redmadrobot.extensions.viewbinding.viewBinding
+import com.takusemba.spotlight.Target
 import dagger.hilt.android.AndroidEntryPoint
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -42,6 +49,9 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     @Inject
     lateinit var hiltPresenter: BalancePresenter
 
+    @Inject
+    lateinit var pref: Pref
+
     private lateinit var incomeAdapter: IncomeAdapter
     private var date = ""
 
@@ -70,6 +80,7 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     override
     fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkHint()
         initDialog()
         initModel()
         initAdapter()
@@ -78,6 +89,22 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         initTime()
         initData()
         initView()
+    }
+
+    private fun checkHint() {
+        if (!pref.isShowBalance()) {
+            val target = ArrayList<Target>()
+            val root = FrameLayout(requireContext())
+            val first = layoutInflater.inflate(R.layout.layout_target, root)
+            val view = View(requireContext())
+            Handler(Looper.getMainLooper()).postDelayed({
+                val firstSpot = setSpotLightTarget(
+                    view, first, "Добро пожаловать "
+                )
+                target.add(firstSpot)
+                setSpotLightBuilder(requireActivity(), target, first)
+            }, 1000)
+        }
     }
 
 
@@ -144,9 +171,9 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     }
 
     override fun initDate() {
+        initModel()
         initAdapterIncome(presenter.getIncomeList())
         initAdapterCost(presenter.getCostList())
-        initModel()
         presenter.checkCostList(presenter.getCostList())
         presenter.checkIncomeList(presenter.getIncomeList())
     }

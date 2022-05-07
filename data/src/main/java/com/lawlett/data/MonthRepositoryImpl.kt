@@ -16,9 +16,9 @@ class MonthRepositoryImpl @Inject constructor(
     override fun gelAllMonth(): List<BalanceModel> {
         val balanceList: MutableList<BalanceModel> = mutableListOf()
         val list = HashSet<String>()
-        var cost: Int
-        var balance: Int
-        var income: Int
+        var cost: Long
+        var balance: Long
+        var income: Long
         var costToString: String
         runBlocking {
             launch {
@@ -35,11 +35,11 @@ class MonthRepositoryImpl @Inject constructor(
                     balance = 0
                     val temp = monthDao.getListToMonth(item)
                     for (lol in temp) {
-                        cost = cost + lol.cost.toInt()
-                        income = income + lol.income.toInt()
+                        cost = cost + lol.cost.toLong()
+                        income = income + lol.income.toLong()
                     }
                     balance = income - cost
-                    costToString = if (cost == 0) {
+                    costToString = if (cost == 0.toLong()) {
                         cost.toString()
                     } else {
                         "-$cost"
@@ -54,7 +54,7 @@ class MonthRepositoryImpl @Inject constructor(
                 }
                 if (getModel().cost != null)
                     if (getModel().cost != "0")
-                    balanceList.add(getModel())
+                        balanceList.add(getModel())
             }
         }
         return balanceList
@@ -62,19 +62,19 @@ class MonthRepositoryImpl @Inject constructor(
 
     private fun getModel(): BalanceModel {
         var model = BalanceModel()
-        var cost = 0
-        var balance: Int
-        var income = 0
-        var costToString = ""
+        var cost: Long = 0
+        var balance: Long
+        var income: Long = 0
+        var costToString: String
         runBlocking {
             launch {
                 if (monthDao.getAllList().isNotEmpty()) {
                     for (item in monthDao.getAllList()) {
-                        cost = cost + item.cost.toInt()
-                        income = income + item.income.toInt()
+                        cost = cost + item.cost.toLong()
+                        income = income + item.income.toLong()
                     }
                     balance = income - cost
-                    costToString = if (cost == 0) {
+                    costToString = if (cost == 0.toLong()) {
                         cost.toString()
                     } else {
                         "-$cost"

@@ -27,13 +27,13 @@
             android:id="@+id/date_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="2\nМай"
             android:textAlignment="center"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/balance_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2\nМай" />
 
         <LinearLayout
             android:id="@+id/balance_layout"
@@ -58,9 +58,12 @@
                 android:id="@+id/balance_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0"
                 android:textColor="@color/white"
-                android:textSize="@dimen/twenty_sp" />
+                android:maxLines="1"
+                android:maxLength="9"
+                android:ellipsize="end"
+                android:textSize="@dimen/twenty_sp"
+                tools:text="0" />
 
         </LinearLayout>
 
@@ -87,10 +90,13 @@
                 android:id="@+id/cost_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0"
                 android:textColor="@color/white"
                 android:textSize="@dimen/twenty_sp"
-                app:drawableStartCompat="@drawable/ic_minus" />
+                android:maxLines="9"
+                android:ellipsize="end"
+                android:singleLine="true"
+                app:drawableStartCompat="@drawable/ic_minus"
+                tools:text="0" />
 
         </LinearLayout>
 
@@ -116,10 +122,13 @@
                 android:id="@+id/income_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0"
+                android:ellipsize="end"
+                android:maxLines="9"
+                android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/twenty_sp"
-                app:drawableStartCompat="@drawable/ic_plus" />
+                app:drawableStartCompat="@drawable/ic_plus"
+                tools:text="0" />
 
         </LinearLayout>
 
@@ -128,8 +137,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="@dimen/zero"
         android:layout_height="@dimen/zero"
-        android:overScrollMode="never"
         android:layout_marginHorizontal="@dimen/twelve"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

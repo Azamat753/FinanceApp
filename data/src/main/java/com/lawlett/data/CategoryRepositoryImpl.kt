@@ -17,7 +17,7 @@ class CategoryRepositoryImpl @Inject constructor
         val balanceList = ArrayList<BalanceModel>()
         val originalList: MutableList<BalanceModel> = mutableListOf()
         val list = HashSet<String>()
-        var cost: Int
+        var cost: Long
         var costToString: String
         runBlocking {
             launch {
@@ -31,9 +31,9 @@ class CategoryRepositoryImpl @Inject constructor
                     costToString = ""
                     val temp = categoryDao.getListToCategory(item)
                     for (ob in temp) {
-                        cost = cost + ob.cost.toInt()
+                        cost = cost + ob.cost.toLong()
                     }
-                    costToString = if (cost == 0) {
+                    costToString = if (cost == 0.toLong()) {
                         cost.toString()
                     } else {
                         "-$cost"
@@ -60,16 +60,16 @@ class CategoryRepositoryImpl @Inject constructor
 
     private fun getModel(): BalanceModel {
         var model = BalanceModel()
-        var cost = 0
+        var cost: Long = 0
         var costToString: String
         runBlocking {
             launch {
                 val list = categoryDao.getAllList()
                 if (list.isNotEmpty()) {
                     for (item in list) {
-                        cost = cost + item.cost.toInt()
+                        cost = cost + item.cost.toLong()
                     }
-                    costToString = if (cost == 0) {
+                    costToString = if (cost == 0.toLong()) {
                         cost.toString()
                     } else {
                         "-$cost"

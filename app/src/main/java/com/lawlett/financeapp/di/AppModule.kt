@@ -1,11 +1,16 @@
 package com.lawlett.financeapp.di
 
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.domain.usecase.balance.*
 import com.lawlett.financeapp.presenter.ChangeBalancePresenter
+import com.lawlett.financeapp.utils.Pref
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 
 @Module
@@ -51,4 +56,12 @@ object AppModule {
     fun saveCostUseCase(balanceRepository: BalanceRepository): SaveCostUseCase {
         return SaveCostUseCase(balanceRepository)
     }
+
+    @Provides
+    fun createShared(@ApplicationContext context: Context): SharedPreferences =
+        context.getSharedPreferences("Shared", MODE_PRIVATE)
+
+    @Provides
+    fun createPref(sharedPreferences: SharedPreferences): Pref =
+        Pref(sharedPreferences)
 }

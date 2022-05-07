@@ -79,6 +79,7 @@ class ChangeBalanceSheetDialogFragment(private val result: Result) :
         initAdapter()
     }
 
+
     private fun initAdapter() {
         binding.categoryRecycler.adapter = adapter
     }
