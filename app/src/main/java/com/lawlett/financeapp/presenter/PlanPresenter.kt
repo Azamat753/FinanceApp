@@ -23,6 +23,14 @@ class PlanPresenter @Inject constructor(
     fun getModel(): TempPlanModel =
         getPlanListUseCase.getPlanList()
 
+    fun checkModel(tempPlanModel: TempPlanModel) =
+        if (tempPlanModel.monthList.isEmpty())
+            viewState.emptyData()
+        else
+            viewState.initPlanVisible()
+
+
+
     fun createPlan(
         date: String,
         month: String, amount: String,

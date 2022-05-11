@@ -26,11 +26,14 @@
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/activity_main.xml" value="0.20521590423257802" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/dialog_plan.xml" value="0.264" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/dialog_warning.xml" value="0.2" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/empty_layout.xml" value="0.152" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/empty_plan_layout.xml" value="0.20521590423257802" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_add_month_sheet_dialog.xml" value="0.264" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_balance.xml" value="0.2" />
-        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_category.xml" value="0.264" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_category.xml" value="0.152" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_change_balance_sheet_dialog.xml" value="0.2" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_history.xml" value="0.11009174311926606" />
+        <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_intro.xml" value="0.20521590423257802" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_month.xml" value="0.2" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/fragment_plan.xml" value="0.176" />
         <entry key="..\:/Code/FinanceApp/app/src/main/res/layout/item_balance.xml" value="0.264" />

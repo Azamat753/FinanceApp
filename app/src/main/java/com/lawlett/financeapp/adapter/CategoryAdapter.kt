@@ -13,7 +13,8 @@ import com.lawlett.financeapp.databinding.ItemCategoryIconBinding
 
 class CategoryAdapter(
     private val context: Context,
-    private val list: List<CategoryIconModel>, private val result: Result,
+    private val list: List<CategoryIconModel>,
+    private val result: Result,
     private val tag: String
 ) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {

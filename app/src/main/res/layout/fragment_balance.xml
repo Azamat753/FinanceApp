@@ -58,10 +58,10 @@
                 android:id="@+id/balance_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:maxLines="1"
-                android:maxLength="9"
                 android:ellipsize="end"
+                android:maxLength="9"
+                android:maxLines="1"
+                android:textColor="@color/white"
                 android:textSize="@dimen/twenty_sp"
                 tools:text="0" />
 
@@ -90,11 +90,11 @@
                 android:id="@+id/cost_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="9"
+                android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/twenty_sp"
-                android:maxLines="9"
-                android:ellipsize="end"
-                android:singleLine="true"
                 app:drawableStartCompat="@drawable/ic_minus"
                 tools:text="0" />
 
@@ -134,6 +134,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="@dimen/zero"
         android:layout_height="@dimen/zero"
@@ -154,11 +155,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/twenty_two"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/cost"
                 android:textColor="#9C9C9C"
                 android:textSize="@dimen/sixteen_sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/cost" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cost_recycler"
@@ -177,11 +178,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/sixteen"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/income"
                 android:textColor="#9C9C9C"
                 android:textSize="@dimen/sixteen_sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cost_recycler" />
+                app:layout_constraintTop_toBottomOf="@id/cost_recycler"
+                tools:text="@string/income" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/income_recycler"
@@ -197,5 +198,19 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <FrameLayout
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/balance_background">
 
+        <include
+            android:id="@+id/include_empty"
+            layout="@layout/empty_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,4 +14,6 @@ interface PlanView : MvpView {
     fun notEmptyDate()
     fun notEmptySource()
     fun notExpectedDate()
+    fun emptyData()
+    fun initPlanVisible()
 }

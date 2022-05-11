@@ -11,6 +11,8 @@ import com.lawlett.financeapp.databinding.FragmentPlanBinding
 import com.lawlett.financeapp.dialog.PlanDialog
 import com.lawlett.financeapp.presenter.PlanPresenter
 import com.lawlett.financeapp.sheetdialog.AddMonthSheetDialog
+import com.lawlett.financeapp.utils.gone
+import com.lawlett.financeapp.utils.visible
 import com.lawlett.view.PlanView
 import com.redmadrobot.extensions.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -67,6 +69,7 @@ class PlanFragment : MvpAppCompatFragment(R.layout.fragment_plan), PlanView, Pla
     }
 
     override fun initData() {
+        presenter.checkModel(presenter.getModel())
         addModelAdapter(
             presenter.getModel().monthList,
             presenter.getModel().nowAmount,
@@ -78,40 +81,42 @@ class PlanFragment : MvpAppCompatFragment(R.layout.fragment_plan), PlanView, Pla
         monthList: List<PlanMonthModel>,
         nowAmountList: List<String>,
         lackAmountList: List<String>
-    ) {
-        planAdapter.addModel(monthList, nowAmountList, lackAmountList)
-    }
+    ) = planAdapter.addModel(monthList, nowAmountList, lackAmountList)
 
-    override fun closeDialog() {
+    override fun closeDialog() =
         planDialog.dismiss()
-    }
 
-    override fun notZero() {
+
+    override fun notZero() =
         toast(getString(R.string.number_not_zero))
-    }
+
 
     private fun toast(message: String) =
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
-    override fun notNegative() {
+    override fun notNegative() =
         toast(getString(R.string.not_negative_number))
-    }
 
-    override fun notEmptyAmount() {
+
+    override fun notEmptyAmount() =
         toast(getString(R.string.enter_amount))
-    }
 
-    override fun notEmptyDate() {
+
+    override fun notEmptyDate() =
         toast(getString(R.string.specify_date))
-    }
 
-    override fun notEmptySource() {
+
+    override fun notEmptySource() =
         toast(getString(R.string.enter_source))
-    }
 
-    override fun notExpectedDate() {
+
+    override fun notExpectedDate() =
         toast(getString(R.string.date_expected))
-    }
+
+
+    override fun emptyData() = binding.includeEmpty.root.visible()
+
+    override fun initPlanVisible() = binding.includeEmpty.root.gone()
 
     override fun transaction(
         date: String,

@@ -13,9 +13,7 @@ import com.lawlett.financeapp.databinding.FragmentBalanceBinding
 import com.lawlett.financeapp.dialog.DialogWarning
 import com.lawlett.financeapp.presenter.BalancePresenter
 import com.lawlett.financeapp.sheetdialog.ChangeBalanceSheetDialogFragment
-import com.lawlett.financeapp.utils.Pref
-import com.lawlett.financeapp.utils.setSpotLightBuilder
-import com.lawlett.financeapp.utils.setSpotLightTarget
+import com.lawlett.financeapp.utils.*
 import com.lawlett.view.BalanceView
 import com.redmadrobot.extensions.viewbinding.viewBinding
 import com.takusemba.spotlight.Target
@@ -80,14 +78,13 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     override
     fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkHint()
         initDialog()
         initModel()
         initAdapter()
         initClickers()
         initScroll()
         initTime()
-        initData()
+        initTempData()
         initView()
     }
 
@@ -99,7 +96,8 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
             val view = View(requireContext())
             Handler(Looper.getMainLooper()).postDelayed({
                 val firstSpot = setSpotLightTarget(
-                    view, first, "Добро пожаловать "
+                    view, first, " \n\n\n\n\n\n\n\n Баланс \n\n\n Окно для просмотра " +
+                            "Баланса \n\n Так же для списка Доходов и Расходов  "
                 )
                 target.add(firstSpot)
                 setSpotLightBuilder(requireActivity(), target, first)
@@ -151,7 +149,11 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         binding.costRecycler.adapter = costAdapter
     }
 
-    private fun initData() = presenter.initDate()
+    private fun initTempData() = presenter.initData()
+
+    override fun emptyData() =
+        binding.includeEmpty.root.visible()
+
 
     private fun initClickers() {
         with(binding) {
@@ -170,28 +172,27 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
         }
     }
 
-    override fun initDate() {
+    override fun initData() {
         initModel()
-        initAdapterIncome(presenter.getIncomeList())
-        initAdapterCost(presenter.getCostList())
+        presenter.checkData(
+            costList = presenter.getCostList(),
+            incomeList = presenter.getIncomeList()
+        )
         presenter.checkCostList(presenter.getCostList())
         presenter.checkIncomeList(presenter.getIncomeList())
     }
 
-    override fun emptyIncome() {
-        binding.incomeListTitle.text = getString(R.string.not_income)
-    }
-
-    override fun emptyCost() {
-        binding.costListTitle.text = getString(R.string.not_cost)
-    }
 
     override fun txtIncome() {
         binding.incomeListTitle.text = getString(R.string.income)
+        initAdapterIncome(presenter.getIncomeList())
+        binding.includeEmpty.root.gone()
     }
 
     override fun txtCost() {
         binding.costListTitle.text = getString(R.string.cost)
+        initAdapterCost(presenter.getCostList())
+        binding.includeEmpty.root.gone()
     }
 
     override fun balanceNegative() = dialog.show()

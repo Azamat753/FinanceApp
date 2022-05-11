@@ -17,6 +17,12 @@ import com.takusemba.spotlight.effet.RippleEffect
 import com.takusemba.spotlight.shape.RoundedRectangle
 
 
+const val UTC = "UTC"
+
+const val BALANCE = "balance"
+
+const val INTRO = "intro"
+
 fun View.gone() {
     this.isVisible = false
 }
@@ -24,10 +30,6 @@ fun View.gone() {
 fun View.visible() {
     this.isVisible = true
 }
-
-const val UTC = "UTC"
-
-const val BALANCE = "balance"
 
 fun setSpotLightTarget(targetView: View, backLayoutView: View, description: String): Target {
     val target = Target.Builder().apply {

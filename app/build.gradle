@@ -79,6 +79,4 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     //spotlight
     implementation 'com.github.takusemba:spotlight:2.0.0'
-    //textSurface
-    implementation 'com.github.elevenetc:textsurface:0.9.1'
 }

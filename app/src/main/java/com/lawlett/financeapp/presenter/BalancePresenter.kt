@@ -21,14 +21,23 @@ class BalancePresenter @Inject constructor(
 
     fun getCostList(): List<BalanceModel> = getCostListUseCase.getCostList()
 
+    fun checkData(costList: List<BalanceModel>, incomeList: List<BalanceModel>) {
+        if (costList.isEmpty() && incomeList.isEmpty()) viewState.emptyData()
+    }
 
-    fun initDate() = viewState.initDate()
 
-    fun checkCostList(costList: List<BalanceModel>) =
-        if (costList.isEmpty()) viewState.emptyCost() else viewState.txtCost()
+    fun initData() = viewState.initData()
 
-    fun checkIncomeList(incomeList: List<BalanceModel>) =
-        if (incomeList.isEmpty()) viewState.emptyIncome() else viewState.txtIncome()
+    fun checkCostList(costList: List<BalanceModel>) {
+        if (costList.isNotEmpty())
+            viewState.txtCost()
+    }
+
+
+    fun checkIncomeList(incomeList: List<BalanceModel>) {
+        if (incomeList.isNotEmpty()) viewState.txtIncome()
+    }
+
 
     fun createCost(amount: String, icon: Int, iconName: String, date: String, month: String) {
         createCostUseCase.createCost(
@@ -42,8 +51,10 @@ class BalancePresenter @Inject constructor(
                 month = month
             )
         )
-        initDate()
+        initData()
     }
 }
+
+
 
 

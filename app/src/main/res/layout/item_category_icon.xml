@@ -19,13 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/ten"
+            android:layout_gravity="center"
             android:background="@drawable/bg_black">
 
             <ImageView
                 android:id="@+id/icon_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_centerInParent="true"
                 android:src="@drawable/ic_briefcase" />
         </RelativeLayout>
 

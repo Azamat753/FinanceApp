@@ -6,9 +6,8 @@ import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(value = AddToEndSingleStrategy::class)
 interface BalanceView : MvpView {
-    fun initDate()
-    fun emptyIncome()
-    fun emptyCost()
+    fun initData()
+    fun emptyData()
     fun txtIncome()
     fun txtCost()
     fun balanceNegative()

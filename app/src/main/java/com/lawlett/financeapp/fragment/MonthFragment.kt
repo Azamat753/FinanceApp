@@ -57,7 +57,7 @@ class MonthFragment : MvpAppCompatFragment(R.layout.fragment_month), MonthView {
         adapter.addList(list)
     }
 
-    override fun txtGone() = binding.txtEmpty.gone()
+    override fun txtGone() = binding.includeEmpty.root.gone()
 
-    override fun txtVisible() = binding.txtEmpty.visible()
+    override fun txtVisible() = binding.includeEmpty.root.visible()
 }
