@@ -3,7 +3,6 @@
     <string name="income">Доход</string>
     <string name="cost">Расход</string>
     <string name="apply">Принять</string>
-    <string name="History">История</string>
     <string name="black">#000000</string>
     <string name="green">#10AF7F</string>
     <string name="main">Главная</string>
@@ -57,4 +56,20 @@
     <string name="welcome">Добро пожаловать</string>
     <string name="not_operation">Пока нет никаких операций</string>
     <string name="not_plan">Пока нет никаких планов</string>
+    <string name="next">Дальше</string>
+    <string name="now_balance">Баланс</string>
+    <string name="window_check_finance">Окно для слежения за вашими Финансами</string>
+    <string name="main_fun_balance">Основная функция выполняет добавление Доходов и Расходов</string>
+    <string name="fragment_for_add">Фрагмент для добавления</string>
+    <string name="costs">Расходов</string>
+    <string name="incomes">Доходов</string>
+    <string name="fragment_for_watch_list_balance">Фрагмент где будут отоброжаться
+        списки Доходов и Расходов</string>
+    <string name="window_for_watch_costs">Окно для просмотра Расходов по Категориям и Месяцам</string>
+    <string name="now_plan">Планирование</string>
+    <string name="window_for_plan">Окно для Планирования финансов</string>
+    <string name="main_fun_plan">Основная функция выполняет добавление месяца с ожидаемой суммой</string>
+    <string name="click_for_month_plan">Кнопка для добавление месяца с ожидаемой суммой</string>
+    <string name="card_plan"> Для добавления доходов к этому месяца нажмите на карточку</string>
+
 </resources>

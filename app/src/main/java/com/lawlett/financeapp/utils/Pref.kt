@@ -10,7 +10,15 @@ class Pref @Inject constructor(
 
     fun showBalance() = sharedPreferences.edit().putBoolean(BALANCE, true).apply()
 
-    fun isShowIntro(): Boolean = sharedPreferences.getBoolean(INTRO, false)
+    fun isShowHistory(): Boolean = sharedPreferences.getBoolean(HISTORY, false)
 
-    fun showIntro() = sharedPreferences.edit().putBoolean(INTRO, true).apply()
+    fun showHistory() = sharedPreferences.edit().putBoolean(HISTORY, true).apply()
+
+    fun isShowPlan(): Boolean = sharedPreferences.getBoolean(PLAN, false)
+
+    fun showPlan() = sharedPreferences.edit().putBoolean(PLAN, true).apply()
+
+    fun isShowCardPlan(): Boolean = sharedPreferences.getBoolean(CARD_PLAN, false)
+
+    fun showCardPlan() = sharedPreferences.edit().putBoolean(CARD_PLAN, true).apply()
 }

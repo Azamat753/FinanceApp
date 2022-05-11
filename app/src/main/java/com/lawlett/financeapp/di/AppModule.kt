@@ -7,6 +7,7 @@ import com.lawlett.domain.repo.BalanceRepository
 import com.lawlett.domain.usecase.balance.*
 import com.lawlett.financeapp.presenter.ChangeBalancePresenter
 import com.lawlett.financeapp.utils.Pref
+import com.lawlett.financeapp.utils.SHARED
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -59,7 +60,7 @@ object AppModule {
 
     @Provides
     fun createShared(@ApplicationContext context: Context): SharedPreferences =
-        context.getSharedPreferences("Shared", MODE_PRIVATE)
+        context.getSharedPreferences(SHARED, MODE_PRIVATE)
 
     @Provides
     fun createPref(sharedPreferences: SharedPreferences): Pref =

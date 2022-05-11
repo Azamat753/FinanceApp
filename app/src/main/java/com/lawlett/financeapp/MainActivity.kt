@@ -2,6 +2,8 @@ package com.lawlett.financeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -26,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         initNavigation()
         initBottomNavigation()
     }
-
     private fun initNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment

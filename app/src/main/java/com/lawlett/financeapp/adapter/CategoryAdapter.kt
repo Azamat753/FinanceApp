@@ -30,7 +30,9 @@ class CategoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val binding: ItemCategoryIconBinding =
-            ItemCategoryIconBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemCategoryIconBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
         return CategoryViewHolder(binding)
     }
 
@@ -46,7 +48,8 @@ class CategoryAdapter(
                         1 -> {
                             for (item in 0..itemCount) {
                                 if (item == position) {
-                                    holder.binding.bgCard.setBackgroundResource(R.drawable.bg_black_light_red)
+                                    holder.binding.bgCard
+                                        .setBackgroundResource(R.drawable.bg_black_light_red)
                                 } else {
                                     handler.post {
                                         notifyItemChanged(item, 2)
@@ -66,7 +69,8 @@ class CategoryAdapter(
                         1 -> {
                             for (item in 0..itemCount) {
                                 if (item == position) {
-                                    holder.binding.bgCard.setBackgroundResource(R.drawable.bg_black_light)
+                                    holder.binding.bgCard
+                                        .setBackgroundResource(R.drawable.bg_black_light)
                                 } else {
                                     handler.post {
                                         notifyItemChanged(item, 2)

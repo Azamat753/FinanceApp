@@ -1,8 +1,12 @@
 package com.lawlett.financeapp.fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.core.view.get
 import com.lawlett.domain.model.PlanModel
 import com.lawlett.domain.model.PlanMonthModel
 import com.lawlett.financeapp.R
@@ -11,10 +15,10 @@ import com.lawlett.financeapp.databinding.FragmentPlanBinding
 import com.lawlett.financeapp.dialog.PlanDialog
 import com.lawlett.financeapp.presenter.PlanPresenter
 import com.lawlett.financeapp.sheetdialog.AddMonthSheetDialog
-import com.lawlett.financeapp.utils.gone
-import com.lawlett.financeapp.utils.visible
+import com.lawlett.financeapp.utils.*
 import com.lawlett.view.PlanView
 import com.redmadrobot.extensions.viewbinding.viewBinding
+import com.takusemba.spotlight.Target
 import dagger.hilt.android.AndroidEntryPoint
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -24,11 +28,15 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class PlanFragment : MvpAppCompatFragment(R.layout.fragment_plan), PlanView, PlanDialog.Result,
     PlanAdapter.ResultA, AddMonthSheetDialog.Result {
+
     private val binding: FragmentPlanBinding by viewBinding()
 
     private lateinit var planAdapter: PlanAdapter
 
     private lateinit var planDialog: PlanDialog
+
+    @Inject
+    lateinit var pref: Pref
 
     @Inject
     lateinit var hiltPresenter: PlanPresenter
@@ -48,6 +56,31 @@ class PlanFragment : MvpAppCompatFragment(R.layout.fragment_plan), PlanView, Pla
         initPresentData()
         initAdapter()
         initBtn()
+        checkHint()
+    }
+
+    private fun checkHint() {
+        if (!pref.isShowPlan()) {
+            val target = ArrayList<Target>()
+            val root = FrameLayout(requireContext())
+            val first = layoutInflater.inflate(R.layout.layout_target, root)
+            val view = View(requireContext())
+            Handler(Looper.getMainLooper()).postDelayed({
+                val firstSpot = setSpotLightTarget(
+                    view, first, "\n\n\n ${getString(R.string.now_plan)}" +
+                            "\n\n${getString(R.string.window_for_plan)}" +
+                            "\n${getString(R.string.main_fun_plan)}"
+                )
+                val secondSpot = setSpotLightTarget(
+                    binding.btnAddMonth, first, "\n\n\n\n\n" +
+                            " ${getString(R.string.click_for_month_plan)}"
+                )
+                target.add(firstSpot)
+                target.add(secondSpot)
+                setSpotLightBuilder(requireActivity(), target, first)
+            }, 100)
+            pref.showPlan()
+        }
     }
 
     private fun initDialog() {
@@ -116,7 +149,26 @@ class PlanFragment : MvpAppCompatFragment(R.layout.fragment_plan), PlanView, Pla
 
     override fun emptyData() = binding.includeEmpty.root.visible()
 
-    override fun initPlanVisible() = binding.includeEmpty.root.gone()
+    override fun initPlanVisible() {
+        binding.includeEmpty.root.gone()
+        checkHintToItem()
+    }
+
+    private fun checkHintToItem() {
+        if(!pref.isShowCardPlan()){
+            val target = ArrayList<Target>()
+            val root = FrameLayout(requireContext())
+            val first = layoutInflater.inflate(R.layout.layout_target, root)
+            Handler(Looper.getMainLooper()).postDelayed({
+                val firstSpot = setSpotLightTarget(
+                    binding.rvPlan[0], first, "\n\n\n\n\n\n\n\n\n\n\n ${getString(R.string.card_plan)}"
+                )
+                target.add(firstSpot)
+                setSpotLightBuilder(requireActivity(), target, first)
+            }, 1000)
+            pref.showCardPlan()
+        }
+    }
 
     override fun transaction(
         date: String,

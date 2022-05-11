@@ -21,7 +21,13 @@ const val UTC = "UTC"
 
 const val BALANCE = "balance"
 
-const val INTRO = "intro"
+const val HISTORY = "history"
+
+const val PLAN = "plan"
+
+const val SHARED = "Shared"
+
+const val CARD_PLAN = "card_plan"
 
 fun View.gone() {
     this.isVisible = false
@@ -51,12 +57,12 @@ fun setSpotLightTarget(targetView: View, backLayoutView: View, description: Stri
 
 fun setSpotLightBuilder(activity: Activity, targets: ArrayList<Target>, backLayoutView: View) {
     Handler(Looper.getMainLooper()).postDelayed({
-        val spotlight = Spotlight.Builder(activity)
-            .setTargets(targets)
-            .setBackgroundColor(R.color.background)
-            .setDuration(1000L)
-            .setAnimation(DecelerateInterpolator(2f))
-            .setOnSpotlightListener(object : OnSpotlightListener {
+        val spotlight = Spotlight.Builder(activity).apply {
+            setTargets(targets)
+            setBackgroundColor(R.color.background)
+            setDuration(1000L)
+            setAnimation(DecelerateInterpolator(2f))
+            setOnSpotlightListener(object : OnSpotlightListener {
                 override fun onStarted() {
 
                 }
@@ -65,7 +71,8 @@ fun setSpotLightBuilder(activity: Activity, targets: ArrayList<Target>, backLayo
 
                 }
             })
-            .build()
+        }.build()
+
 
         spotlight.start()
 

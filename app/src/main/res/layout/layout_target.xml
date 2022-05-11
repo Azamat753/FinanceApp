@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <Button
         android:id="@+id/next"
@@ -10,27 +11,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="60dp"
-        android:background="@color/black"
+        android:layout_margin="@dimen/sixty"
+        android:background="@drawable/bg_next"
+        android:textAllCaps="false"
         android:fontFamily="sans-serif-condensed-medium"
-        android:padding="18dp"
-        android:text="Next"
+        android:padding="@dimen/sixteen"
+        android:text="@string/next"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/text_target"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:padding="24dp"
-        android:text="Habit"
+        android:layout_marginTop="@dimen/fifty"
+        android:padding="@dimen/twenty_four"
+        tools:text="Habit"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="@dimen/twenty_sp"
         android:textStyle="bold" />
 </androidx.constraintlayout.widget.ConstraintLayout>

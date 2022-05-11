@@ -78,6 +78,7 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
     override
     fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkHint()
         initDialog()
         initModel()
         initAdapter()
@@ -96,12 +97,34 @@ class BalanceFragment : MvpAppCompatFragment(R.layout.fragment_balance), Balance
             val view = View(requireContext())
             Handler(Looper.getMainLooper()).postDelayed({
                 val firstSpot = setSpotLightTarget(
-                    view, first, " \n\n\n\n\n\n\n\n Баланс \n\n\n Окно для просмотра " +
-                            "Баланса \n\n Так же для списка Доходов и Расходов  "
+                    view,
+                    first,
+                    "\n\n\n\n\n\n\n\n\n ${getString(R.string.now_balance)} " +
+                            "\n\n ${getString(R.string.window_check_finance)} " +
+                            " \n ${getString(R.string.main_fun_balance)}"
+                )
+                val secondSpot = setSpotLightTarget(
+                    binding.incomeLayout, first,
+                    "\n\n\n\n\n\n${getString(R.string.fragment_for_add)}" +
+                            " \n ${getString(R.string.incomes)}"
+                )
+                val thirdSpot = setSpotLightTarget(
+                    binding.costLayout, first,
+                    "\n\n\n\n\n\n${getString(R.string.fragment_for_add)}" +
+                            " \n ${getString(R.string.costs)}"
+                )
+                val fourthStop = setSpotLightTarget(
+                    binding.includeEmpty.root,
+                    first,
+                    "\n\n\n${getString(R.string.fragment_for_watch_list_balance)}"
                 )
                 target.add(firstSpot)
+                target.add(secondSpot)
+                target.add(thirdSpot)
+                target.add(fourthStop)
                 setSpotLightBuilder(requireActivity(), target, first)
             }, 1000)
+            pref.showBalance()
         }
     }
 
