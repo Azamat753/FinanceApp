@@ -70,6 +70,6 @@
     <string name="window_for_plan">Окно для Планирования финансов</string>
     <string name="main_fun_plan">Основная функция выполняет добавление месяца с ожидаемой суммой</string>
     <string name="click_for_month_plan">Кнопка для добавление месяца с ожидаемой суммой</string>
-    <string name="card_plan"> Для добавления доходов к этому месяца нажмите на карточку</string>
+    <string name="card_plan"> Для добавления доходов к этому месяцу нажмите на карточку</string>
 
 </resources>
